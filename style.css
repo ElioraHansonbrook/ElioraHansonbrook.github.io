@@ -1,9 +1,9 @@
 h1 {
     font-family: "Newsreader", Georgia, 'Times New Roman', Times, serif;
-    align-items: center;
+    text-align: center;
     color: navy;
 }
 
 body {
-    text-indent: 10px;
+    text-indent: 30px;
 }
