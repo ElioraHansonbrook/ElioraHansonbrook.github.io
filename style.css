@@ -4,6 +4,15 @@ h1 {
     color: rgb(5, 5, 61);
 }
 
+.bottomText {
+    padding: 25px;
+    color: gray;
+    text-align: center;
+    text-indent: none;
+    font-size: 0.8em;
+    pointer-events: none;
+  }
+
 body {
     background-color:rgb(241, 241, 235);
     padding: 5%;
