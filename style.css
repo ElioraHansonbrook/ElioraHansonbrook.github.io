@@ -1,9 +1,119 @@
 h1 {
     font-family: "Newsreader", Georgia, 'Times New Roman', Times, serif;
     text-align: center;
-    color: navy;
+    color: rgb(5, 5, 61);
 }
 
 body {
-    text-indent: 30px;
+    background-color:rgb(241, 241, 235);
+    padding: 5%;
 }
+
+p {
+    text-indent: 20px;
+    text-align: justify;
+    font-family: "Newsreader", Georgia, 'Times New Roman', Times, serif;
+    line-height: 130%;
+    align-items: center;
+    max-width: 750px;
+}
+
+.navigationBar {
+    display: none;
+}
+
+@media only screen and (min-width: 1001px) {
+    .navigationBar {
+        width: 20%;
+        position: fixed;
+        overflow: hidden;
+        right: 30px;
+        top: 30px;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-width: 200px;
+        margin: 0;
+    }
+}
+
+.mainContent {
+    height: 100%;
+    width: 67%;
+    left: 20px;
+    inset: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1000px) {
+    .mainContent {
+        width: 100%;
+        inset: 100px;
+    }
+}
+
+.mainContent :link {
+    color: black;
+    text-underline-offset: 3px;
+    text-decoration-color: rgb(47, 47, 176);
+}
+
+.mainContent :visited {
+    color: black;
+    text-underline-offset: 3px;
+    text-decoration-color: rgb(47, 47, 176);
+}
+
+.mainContent :hover {
+    color:rgb(5, 5, 61);
+    text-decoration-color: brown;
+}
+
+.vl {
+    width: 5px;
+    background-color: #dd2424;
+    transform: translateY(40px) translateX(55px);
+    height: 100vh; /* Full viewport height */
+}
+
+  .optionsBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box; 
+  }
+
+  .optionsBox div {
+    /*outline-color: #dd2424;
+    outline-width: 2px;
+    background-color: #dd2424;
+    outline-style: solid;*/
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .optionsBox :link {
+    color: rgb(47, 47, 176);
+    font-weight: bold;
+    text-decoration-color: rgb(47, 47, 176);
+    text-decoration-thickness: 5px;
+    text-underline-offset: 5px;
+  }
+
+  .optionsBox :visited {
+    color: rgb(47, 47, 176);
+    font-weight: bold;
+    text-decoration-color: rgb(47, 47, 176);
+    text-decoration-thickness: 5px;
+    text-underline-offset: 5px;
+  }
+
+  .optionsBox :hover {
+    text-decoration-color: #dd2424;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 5px;
+  }
