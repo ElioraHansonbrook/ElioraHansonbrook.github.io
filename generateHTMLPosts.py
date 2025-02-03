@@ -10,8 +10,17 @@ def getSidebar():
     file.close()
     return sidebar
 
+def getTopbar():
+    topbar = ""
+    file = open("topbar.html", 'r')
+    for line in file:
+        topbar = topbar + line
+    file.close()
+    return topbar
+
 def generatePage(withStr: str):
     sidebar = getSidebar()
+    topbar = getTopbar()
     acc = ""
     file = open("template.html", 'r')
     for line in file:
@@ -19,6 +28,8 @@ def generatePage(withStr: str):
             acc = acc + withStr
         elif line.__contains__("Sidebar."):
             acc = acc + sidebar
+        elif line.__contains__("Topbar."):
+            acc = acc + topbar
         else:
             acc = acc + line
     file.close()
