@@ -25,11 +25,11 @@ def generatePage(withStr: str):
     file = open("template.html", 'r')
     for line in file:
         if line.__contains__("No Text Here Right Now."):
-            acc = acc + withStr
+            acc = acc + withStr + "\n"
         elif line.__contains__("Sidebar."):
-            acc = acc + sidebar
+            acc = acc + sidebar + "\n"
         elif line.__contains__("Topbar."):
-            acc = acc + topbar
+            acc = acc + topbar + "\n"
         else:
             acc = acc + line
     file.close()
@@ -89,12 +89,13 @@ for post in os.listdir("Blogposts"):
     file.close()
     shutil.rmtree("Outputs")
     os.mkdir("Outputs")
-    file = open("Outputs/" + post + ".html", 'w')
+    postName = post.removesuffix(".md")
+    file = open("Outputs/" + postName + ".html", 'w')
     file.write(mded)
     file.close()
     shutil.rmtree("Posts")
     os.mkdir("Posts")
-    file = open("Posts/" + post + ".html", 'w')
+    file = open("Posts/" + postName + ".html", 'w')
     acc = generatePage(mded)
     file.write(acc)
     file.close()
