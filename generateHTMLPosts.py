@@ -65,7 +65,7 @@ def createArchive():
     for post in os.listdir("Blogposts"):
         date = post[:10]
         name = post[11:].strip(".md").title().replace("-", " ")
-        acc += f"\n <a href=Posts/{post}.html>{name}</a>"
+        acc += f"\n <a href=Posts/{post.removesuffix(".md")}.html>{name}</a>"
     acc = acc + "\n</div>"
     os.remove("archiveTemplate.html")
     file = open("archiveTemplate.html", 'w')
