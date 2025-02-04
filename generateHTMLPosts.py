@@ -76,6 +76,13 @@ def createArchive():
     file = open("archive.html", 'w')
     file.write(acc)
     file.close()
+
+def create404():
+    page = generatePage(withStr="<h1>404: Page Not Found</h1>")
+    os.remove("404.html")
+    file = open("404.html", 'w')
+    file.write(page)
+    file.close()
             
 i = 0
 postHTML = ""
@@ -103,3 +110,4 @@ for post in os.listdir("Blogposts"):
     i = i + 1
 createMain(postHTML)
 createArchive()
+create404()
