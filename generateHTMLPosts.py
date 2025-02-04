@@ -1,6 +1,13 @@
 import os
 import shutil
+import calendar
 import markdown
+
+def makeNiceDateName(date: str):
+    year = date[:4]
+    month = date[5:7]
+    day = date [8:10].removeprefix("0")
+    return calendar.month_name[int(month)] + " " + day + ", " + year
 
 def getSidebar():
     sidebar = ""
@@ -87,8 +94,10 @@ def create404():
 i = 0
 postHTML = ""
 for post in os.listdir("Blogposts"):
+    date = post[:10]
+    name = post[11:].strip(".md").title().replace("-", " ").removesuffix(".md")
     file = open("Blogposts/" + post, 'r')
-    acc = ""
+    acc = "<div class=\"postInfo\">\n<h1>" + name + "</h1>\n<h4 class=\"postInfo\">Published " + makeNiceDateName(date) + "</h4>\n</div>"
     for line in file:
         acc = acc + "\n" + line
     acc = refineMarkers(acc)
