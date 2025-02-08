@@ -72,7 +72,7 @@ def createArchive():
     <div class=\"miniSpace\"></div>"""
     for post in os.listdir("Blogposts"):
         date = post[:10]
-        name = post[11:].strip(".md").title().replace("-", " ")
+        name = post[11:].strip(".md").title().replace("-", " ").replace(" And ", " and ").replace(" The ", " the ")
         acc += f"\n <a href=Posts/{post.removesuffix(".md")}.html class=\"archiveItem\">{name}</a>"
     acc = acc + "\n</div>"
     os.remove("archiveTemplate.html")
@@ -81,6 +81,7 @@ def createArchive():
     file.close()
     os.remove("archive.html")
     acc = generatePage(acc)
+    acc = acc.replace("<title>Eliora Hansonbrook</title>", "<title>The Hansonbrook Blog Archive</title>")
     file = open("archive.html", 'w')
     file.write(acc)
     file.close()
@@ -100,20 +101,20 @@ shutil.rmtree("Posts")
 os.mkdir("Posts")
 for post in os.listdir("Blogposts"):
     date = post[:10]
-    name = post[11:].strip(".md").title().replace("-", " ").removesuffix(".md")
+    name = post[11:].strip(".md").title().replace("-", " ").removesuffix(".md").replace(" And ", " and ").replace(" The ", " the ")
     file = open("Blogposts/" + post, 'r')
-    acc = "<div class=\"postInfo\">\n<h1>" + name + "</h1>\n<h4 class=\"postInfo\">Published " + makeNiceDateName(date) + "</h4>\n</div>"
+    postName = post.removesuffix(".md")
+    acc = "<div class=\"postInfo\">\n<h1 class=\"bigLink\"><a href=\"../Posts/" + postName + ".html\">" + name + "</a></h1>\n<h4 class=\"postInfo\">Published " + makeNiceDateName(date) + "</h4>\n</div>"
     for line in file:
-        acc = acc + "\n" + line
-    acc = refineMarkers(acc)
+        acc = acc + "\n" + refineMarkers(line)
     mded = markdown.markdown(acc)
     file.close()
-    postName = post.removesuffix(".md")
     file = open("Outputs/" + postName + ".html", 'w')
     file.write(mded)
     file.close()
     file = open("Posts/" + postName + ".html", 'w')
     acc = generatePage(mded)
+    acc = acc.replace("<title>Eliora Hansonbrook</title>", "<title>" + name + " – Eliora Hansonbrook</title>")
     file.write(acc)
     file.close()
     postHTML = postHTML + mded + "\n<div class=\"space\"></div>\n"
