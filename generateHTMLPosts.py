@@ -68,11 +68,12 @@ def refineMarkers(text: str):
 
 def createArchive():
     acc = """<h1>Archive</h1>
-    <div>"""
+    <div class=\"archive\">
+    <div class=\"miniSpace\"></div>"""
     for post in os.listdir("Blogposts"):
         date = post[:10]
         name = post[11:].strip(".md").title().replace("-", " ")
-        acc += f"\n <a href=Posts/{post.removesuffix(".md")}.html>{name}</a>"
+        acc += f"\n <a href=Posts/{post.removesuffix(".md")}.html class=\"archiveItem\">{name}</a>"
     acc = acc + "\n</div>"
     os.remove("archiveTemplate.html")
     file = open("archiveTemplate.html", 'w')
@@ -93,6 +94,10 @@ def create404():
             
 i = 0
 postHTML = ""
+shutil.rmtree("Outputs")
+os.mkdir("Outputs")
+shutil.rmtree("Posts")
+os.mkdir("Posts")
 for post in os.listdir("Blogposts"):
     date = post[:10]
     name = post[11:].strip(".md").title().replace("-", " ").removesuffix(".md")
@@ -103,19 +108,15 @@ for post in os.listdir("Blogposts"):
     acc = refineMarkers(acc)
     mded = markdown.markdown(acc)
     file.close()
-    shutil.rmtree("Outputs")
-    os.mkdir("Outputs")
     postName = post.removesuffix(".md")
     file = open("Outputs/" + postName + ".html", 'w')
     file.write(mded)
     file.close()
-    shutil.rmtree("Posts")
-    os.mkdir("Posts")
     file = open("Posts/" + postName + ".html", 'w')
     acc = generatePage(mded)
     file.write(acc)
     file.close()
-    postHTML = postHTML + mded
+    postHTML = postHTML + mded + "\n<div class=\"space\"></div>\n"
     i = i + 1
 createMain(postHTML)
 createArchive()
