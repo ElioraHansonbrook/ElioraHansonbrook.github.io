@@ -117,7 +117,10 @@ for post in os.listdir("Blogposts"):
     acc = acc.replace("<title>Eliora Hansonbrook</title>", "<title>" + name + " – Eliora Hansonbrook</title>")
     file.write(acc)
     file.close()
-    postHTML = postHTML + mded + "\n<div class=\"space\"></div>\n"
+    if i < len(os.listdir("Blogposts")) - 1:
+        postHTML = postHTML + mded + "\n<div class=\"space\"></div>\n"
+    else:
+        postHTML = postHTML + mded
     i = i + 1
 createMain(postHTML)
 createArchive()
