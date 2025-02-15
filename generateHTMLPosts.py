@@ -6,14 +6,14 @@ import markdown
 import time
 from email import utils
 
-def generateRSSarticle(name, date, content):
+def generateRSSarticle(name, date, content=str):
     date = datetime.date(int(date[:4]), int(date[5:7]), int(date[8:10]))
     tuple = date.timetuple()
-    nowtimestamp = time.mktime(tuple)
-    date = utils.formatdate(nowtimestamp)
+    timeStamp = time.mktime(tuple)
+    date = utils.formatdate(timeStamp+3600*6)
     xml = "\n<item>\n<title>"+ name + "</title>\n"
     xml += "<pubDate>" + str(date) + "</pubDate>\n"  # Add publication date
-    xml += "<description><![CDATA[" + content + "]]></description>\n"  # Add content/description
+    xml += "<description><![CDATA[" + content.replace("../", "https://hansonbrook.com/") + "]]></description>\n"  # Add content/description
     xml += "<link>https://hansonbrook.com/Posts/" + name.replace(" ", "-").lower() + "</link>\n"
     xml += "</item>\n"
     return xml
@@ -133,10 +133,13 @@ for post in os.listdir("Blogposts"):
     name = post[11:].removesuffix(".md").title().replace("-", " ").removesuffix(".md").replace(" And ", " and ").replace(" The ", " the ")
     file = open("Blogposts/" + post, 'r')
     postName = post.removesuffix(".md")
-    acc = "<div class=\"postInfo\">\n<h1 class=\"bigLink\"><a href=\"../Posts/" + postName + ".html\">" + name + "</a></h1>\n<h4 class=\"postInfo\">Published " + makeNiceDateName(date) + "</h4>\n</div>"
+    acc = ""
     for line in file:
-        acc = acc + "\n" + refineMarkers(line)
+        acc += "\n" + refineMarkers(line)
     mded = markdown.markdown(acc)
+    rssArticles.append(generateRSSarticle(name, date, mded))
+    acc = "<div class=\"postInfo\">\n<h1 class=\"bigLink\"><a href=\"../Posts/" + postName + ".html\">" + name + "</a></h1>\n<h4 class=\"postInfo\">Published " + makeNiceDateName(date) + "</h4>\n</div>\n"
+    mded = acc + mded
     file.close()
     file = open("Outputs/" + postName + ".html", 'w')
     file.write(mded)
@@ -150,7 +153,6 @@ for post in os.listdir("Blogposts"):
         postHTML = postHTML + mded + "\n<div class=\"space\"></div>\n"
     else:
         postHTML = postHTML + mded
-    rssArticles.append(generateRSSarticle(name, date, mded))
     i = i + 1
 createMain(postHTML)
 makeRSS(rssArticles)
