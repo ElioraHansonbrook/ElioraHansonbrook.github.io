@@ -12,8 +12,7 @@ def generateRSSarticle(name, date, content):
     return xml
 
 def makeRSS(articles):
-    xml = """
-    <?xml version="1.0"?>
+    xml = """<?xml version="1.0"?>
     <rss version="2.0>
         <channel>
         <title>Eliora Hansonbrook</title>
