@@ -1,11 +1,18 @@
 import os
 import shutil
 import calendar
+import datetime
 import markdown
+import time
+from email import utils
 
 def generateRSSarticle(name, date, content):
+    date = datetime.date(int(date[:4]), int(date[5:7]), int(date[8:10]))
+    tuple = date.timetuple()
+    nowtimestamp = time.mktime(tuple)
+    date = utils.formatdate(nowtimestamp)
     xml = "\n<item>\n<title>"+ name + "</title>\n"
-    xml += "<pubDate>" + date + "</pubDate>\n"  # Add publication date
+    xml += "<pubDate>" + str(date) + "</pubDate>\n"  # Add publication date
     xml += "<description><![CDATA[" + content + "]]></description>\n"  # Add content/description
     xml += "<link>https://hansonbrook.com/Posts/" + name.replace(" ", "-").lower() + "</link>\n"
     xml += "</item>\n"
