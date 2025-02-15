@@ -3,6 +3,33 @@ import shutil
 import calendar
 import markdown
 
+def generateRSSarticle(name, date, content):
+    xml = "\n<item>\n<title>"+ name + "</title>\n"
+    xml += "<pubDate>" + date + "</pubDate>\n"  # Add publication date
+    xml += "<description><![CDATA[" + content + "]]></description>\n"  # Add content/description
+    xml += "<link>https://hansonbrook.com/Posts/" + name.replace(" ", "-").lower() + "</link>\n"
+    xml += "</item>\n"
+    return xml
+
+def makeRSS(articles):
+    xml = """
+    <?xml version="1.0"?>
+    <rss version="2.0>
+        <channel>
+        <title>Eliora Hansonbrook</title>
+        <link>https://hansonbrook.com</link>
+        <description>The latest posts from the blog</description>
+    """
+    for article in articles:
+        xml += article
+    xml += """
+        </channel>
+    </rss>
+    """
+    file = open("rss.xml", 'w')
+    file.write(xml)
+    file.close()
+
 def makeNiceDateName(date: str):
     year = date[:4]
     month = date[5:7]
@@ -44,7 +71,6 @@ def generatePage(withStr: str):
 
 def createMain(withStr: str):
     acc = generatePage(withStr)
-    os.remove("index.html")
     file = open("index.html", 'w')
     file.write(acc)
     file.close()
@@ -72,14 +98,12 @@ def createArchive():
     <div class=\"miniSpace\"></div>"""
     for post in os.listdir("Blogposts"):
         date = post[:10]
-        name = post[11:].strip(".md").title().replace("-", " ").replace(" And ", " and ").replace(" The ", " the ")
+        name = post[11:].removesuffix(".md").title().replace("-", " ").replace(" And ", " and ").replace(" The ", " the ")
         acc += f"\n <a href=Posts/{post.removesuffix(".md")}.html class=\"archiveItem\">{name}</a>"
     acc = acc + "\n</div>"
-    os.remove("archiveTemplate.html")
     file = open("archiveTemplate.html", 'w')
     file.write(acc)
     file.close()
-    os.remove("archive.html")
     acc = generatePage(acc)
     acc = acc.replace("<title>Eliora Hansonbrook</title>", "<title>The Hansonbrook Blog Archive</title>")
     file = open("archive.html", 'w')
@@ -88,7 +112,6 @@ def createArchive():
 
 def create404():
     page = generatePage(withStr="<h1>404: Page Not Found</h1>")
-    os.remove("404.html")
     file = open("404.html", 'w')
     file.write(page)
     file.close()
@@ -99,9 +122,10 @@ shutil.rmtree("Outputs")
 os.mkdir("Outputs")
 shutil.rmtree("Posts")
 os.mkdir("Posts")
+rssArticles = []
 for post in os.listdir("Blogposts"):
     date = post[:10]
-    name = post[11:].strip(".md").title().replace("-", " ").removesuffix(".md").replace(" And ", " and ").replace(" The ", " the ")
+    name = post[11:].removesuffix(".md").title().replace("-", " ").removesuffix(".md").replace(" And ", " and ").replace(" The ", " the ")
     file = open("Blogposts/" + post, 'r')
     postName = post.removesuffix(".md")
     acc = "<div class=\"postInfo\">\n<h1 class=\"bigLink\"><a href=\"../Posts/" + postName + ".html\">" + name + "</a></h1>\n<h4 class=\"postInfo\">Published " + makeNiceDateName(date) + "</h4>\n</div>"
@@ -121,7 +145,9 @@ for post in os.listdir("Blogposts"):
         postHTML = postHTML + mded + "\n<div class=\"space\"></div>\n"
     else:
         postHTML = postHTML + mded
+    rssArticles.append(generateRSSarticle(name, date, mded))
     i = i + 1
 createMain(postHTML)
+makeRSS(rssArticles)
 createArchive()
 create404()
