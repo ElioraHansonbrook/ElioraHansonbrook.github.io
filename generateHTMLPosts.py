@@ -13,11 +13,11 @@ def generateRSSarticle(name, date, content):
 
 def makeRSS(articles):
     xml = """<?xml version="1.0"?>
-    <rss version="2.0>
-        <channel>
-        <title>Eliora Hansonbrook</title>
-        <link>https://hansonbrook.com</link>
-        <description>The latest posts from the blog</description>
+<rss version="2.0>
+<channel>
+    <title>Eliora Hansonbrook</title>
+    <link>https://hansonbrook.com</link>
+    <description>The latest posts from the blog</description>
     """
     for article in articles:
         xml += article
