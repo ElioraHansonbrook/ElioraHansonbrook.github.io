@@ -6,6 +6,9 @@ import markdown
 import time
 from email import utils
 
+def titelize(string=str):
+    return string.title().replace("-", " ").replace(" And ", " and ").replace(" The ", " the ").replace(" Of ", " of ")
+
 def generateRSSarticle(name, date, content=str):
     date = datetime.date(int(date[:4]), int(date[5:7]), int(date[8:10]))
     tuple = date.timetuple()
@@ -103,7 +106,7 @@ def createArchive():
     <div class=\"miniSpace\"></div>"""
     for post in os.listdir("Blogposts"):
         date = post[:10]
-        name = post[11:].removesuffix(".md").title().replace("-", " ").replace(" And ", " and ").replace(" The ", " the ")
+        name = titelize(post[11:].removesuffix(".md"))
         acc += f"\n <a href=Posts/{post.removesuffix(".md")}.html class=\"archiveItem\">{name}</a>"
     acc = acc + "\n</div>"
     file = open("archiveTemplate.html", 'w')
@@ -130,7 +133,7 @@ os.mkdir("Posts")
 rssArticles = []
 for post in os.listdir("Blogposts"):
     date = post[:10]
-    name = post[11:].removesuffix(".md").title().replace("-", " ").removesuffix(".md").replace(" And ", " and ").replace(" The ", " the ")
+    name = titelize(post[11:].removesuffix(".md"))
     file = open("Blogposts/" + post, 'r')
     postName = post.removesuffix(".md")
     acc = ""
