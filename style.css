@@ -11,7 +11,7 @@ h2 {
 }
 
 h4 {
-    color: grey;
+    color: rgb(107, 107, 107);
     text-align: center;
     padding-bottom: 32px;
     pointer-events: none;
@@ -38,7 +38,7 @@ h4 {
 
 .bottomText {
     padding: 25px;
-    color: gray;
+    color: rgb(107, 107, 107);
     text-align: center;
     text-indent: none;
     font-size: 0.8em;

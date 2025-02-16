@@ -4,6 +4,7 @@ import calendar
 import datetime
 import markdown
 import time
+import re
 from email import utils
 
 def titelize(string=str):
@@ -154,6 +155,7 @@ for post in os.listdir("Blogposts"):
     file = open("Posts/" + postName + ".html", 'w')
     acc = generatePage(mded)
     acc = acc.replace("<title>Eliora Hansonbrook</title>", "<title>" + name + " – Eliora Hansonbrook</title>")
+    acc = acc.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", "<meta name=\"description\" content=\"" + str(re.split("\n", mded)[-1]).replace("<p>", "").replace("</p>", "") + "\">")
     file.write(acc)
     file.close()
     if i < len(os.listdir("Blogposts")) - 1:
