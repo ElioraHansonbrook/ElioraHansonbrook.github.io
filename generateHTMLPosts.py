@@ -51,7 +51,7 @@ def makeNiceDateName(date: str):
 
 def getSidebar():
     sidebar = ""
-    file = open("sidebar.html", 'r')
+    file = open("Templates/sidebar.html", 'r')
     for line in file:
         sidebar = sidebar + line
     file.close()
@@ -59,7 +59,7 @@ def getSidebar():
 
 def getTopbar():
     topbar = ""
-    file = open("topbar.html", 'r')
+    file = open("Templates/topbar.html", 'r')
     for line in file:
         topbar = topbar + line
     file.close()
@@ -69,7 +69,7 @@ def generatePage(withStr: str):
     sidebar = getSidebar()
     topbar = getTopbar()
     acc = ""
-    file = open("template.html", 'r')
+    file = open("Templates/template.html", 'r')
     for line in file:
         if line.__contains__("No Text Here Right Now."):
             acc = acc + withStr + "\n"
@@ -114,7 +114,7 @@ def createArchive():
         name = titelize(post[11:].removesuffix(".md"))
         acc += f"\n <a href=Posts/{post.removesuffix(".md")}.html class=\"archiveItem\">{name}</a>"
     acc = acc + "\n</div>"
-    file = open("archiveTemplate.html", 'w')
+    file = open("Templates/archiveTemplate.html", 'w')
     file.write(acc)
     file.close()
     acc = generatePage(acc)
@@ -128,42 +128,42 @@ def create404():
     file = open("404.html", 'w')
     file.write(page)
     file.close()
-            
-i = 0
-postHTML = ""
-shutil.rmtree("Outputs")
-os.mkdir("Outputs")
-shutil.rmtree("Posts")
-os.mkdir("Posts")
-rssArticles = []
-for post in os.listdir("Blogposts"):
-    date = post[:10]
-    name = titelize(post[11:].removesuffix(".md"))
-    file = open("Blogposts/" + post, 'r')
-    postName = post.removesuffix(".md")
-    acc = ""
-    for line in file:
-        acc += "\n" + refineMarkers(line)
-    mded = markdown.markdown(acc)
-    rssArticles.append(generateRSSarticle(name, date, mded))
-    acc = "<div class=\"postInfo\">\n<h1 class=\"bigLink\"><a href=\"../Posts/" + postName + ".html\">" + name + "</a></h1>\n<h4 class=\"postInfo\">Published " + makeNiceDateName(date) + "</h4>\n</div>\n"
-    mded = acc + mded
-    file.close()
-    file = open("Outputs/" + postName + ".html", 'w')
-    file.write(mded)
-    file.close()
-    file = open("Posts/" + postName + ".html", 'w')
-    acc = generatePage(mded)
-    acc = acc.replace("<title>Eliora Hansonbrook</title>", "<title>" + name + " – Eliora Hansonbrook</title>")
-    acc = acc.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", "<meta name=\"description\" content=\"" + str(re.split("\n", mded)[-1]).replace("<p>", "").replace("</p>", "") + "\">")
-    file.write(acc)
-    file.close()
-    if i < len(os.listdir("Blogposts")) - 1:
-        postHTML = postHTML + mded + "\n<div class=\"space\"></div>\n"
-    else:
-        postHTML = postHTML + mded
-    i = i + 1
-createMain(postHTML)
-makeRSS(rssArticles)
-createArchive()
-create404()
+
+def main():
+    i = 0
+    postHTML = ""
+    rssArticles = []
+    for post in os.listdir("Blogposts"):
+        date = post[:10]
+        name = titelize(post[11:].removesuffix(".md"))
+        file = open("Blogposts/" + post, 'r')
+        postName = post.removesuffix(".md")
+        acc = ""
+        for line in file:
+            acc += "\n" + refineMarkers(line)
+        mded = markdown.markdown(acc)
+        rssArticles.append(generateRSSarticle(name, date, mded))
+        acc = "<div class=\"postInfo\">\n<h1 class=\"bigLink\"><a href=\"../Posts/" + postName +".html\">" + name + "</a></h1>\n<h4 class=\"postInfo\">Published " + makeNiceDateName(date) + "</h4>\n</div>\n"
+        mded = acc + mded
+        file.close()
+        file = open("Outputs/" + postName + ".html", 'w')
+        file.write(mded)
+        file.close()
+        file = open("Posts/" + postName + ".html", 'w')
+        acc = generatePage(mded)
+        acc = acc.replace("<title>Eliora Hansonbrook</title>", "<title>" + name + " – Eliora Hansonbrook</title>\n\t\t<meta property=\"og:title\" content=\"" + name + "\">\n\t\t<meta property=\"og:type\" content=\"article\">\n\t\t<meta property=\"og:url\" content=\"https://hansonbrook.com/Posts/" + postName + "\">\n\t\t<meta property=\"og:image\" content=\"https://hansonbrook.com/Media/PreviewImage.png\">\n\t\t<meta property=\"og:sitename\" content=\"Eliora Hansonbrook\"")
+        acc = acc.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", "<meta name=\"description\" content=\"" + str(re.split("\n", mded)[-1]).replace("<p>", "").replace("</p>", "") + "\">")
+        file.write(acc)
+        file.close()
+        if i < len(os.listdir("Blogposts")) - 1:
+            postHTML = postHTML + mded + "\n<div class=\"space\"></div>\n"
+        else:
+            postHTML = postHTML + mded
+        i = i + 1
+    createMain(postHTML)
+    makeRSS(rssArticles)
+    createArchive()
+    create404()
+
+if __name__ == "__main__":
+    main()
