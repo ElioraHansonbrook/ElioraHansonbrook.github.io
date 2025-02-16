@@ -10,14 +10,15 @@ def titelize(string=str):
     return string.title().replace("-", " ").replace(" And ", " and ").replace(" The ", " the ").replace(" Of ", " of ")
 
 def generateRSSarticle(name, date, content=str):
-    date = datetime.date(int(date[:4]), int(date[5:7]), int(date[8:10]))
-    tuple = date.timetuple()
+    dateB = datetime.date(int(date[:4]), int(date[5:7]), int(date[8:10]))
+    tuple = dateB.timetuple()
     timeStamp = time.mktime(tuple)
-    date = utils.formatdate(timeStamp+3600*6)
+    dateB = utils.formatdate(timeStamp+3600*6)
     xml = "\n<item>\n<title>"+ name + "</title>\n"
-    xml += "<pubDate>" + str(date) + "</pubDate>\n"  # Add publication date
+    xml += "<pubDate>" + str(dateB) + "</pubDate>\n"  # Add publication date
+    xml += "<author>Eliora Hansonbrook</author>\n"  # Add byline
     xml += "<description><![CDATA[" + content.replace("../", "https://hansonbrook.com/") + "]]></description>\n"  # Add content/description
-    xml += "<link>https://hansonbrook.com/Posts/" + name.replace(" ", "-").lower() + "</link>\n"
+    xml += "<link>https://hansonbrook.com/Posts/" + date + "-" + name.replace(" ", "-").lower() + "</link>\n"
     xml += "</item>\n"
     return xml
 
@@ -27,7 +28,10 @@ def makeRSS(articles):
     <channel>
     <title>Eliora Hansonbrook</title>
     <link>https://hansonbrook.com</link>
-    <description>The latest posts from the blog</description>"""
+    <description>The latest posts from the blog</description>
+    <language>en</language>
+    <copyright>©2025 Eliiora Hansonbrook. All Rights Reserved.</copyright>
+    <managingEditor>eliora@hansonbrook.com</managingEditor>"""
     for article in articles:
         xml += article
     xml += """
