@@ -129,6 +129,15 @@ def create404():
     file.write(page)
     file.close()
 
+def getSpecialAnnouncementHTML(title = str, subtitle = str, top = str, bottom = str):
+    return f"""
+    <div class = "specialAnnouncement">
+        <h1>{title}</h1>
+        <h4>{subtitle}</h4>
+        <h6 class = "floatingElementBottom">{top}</h6>
+        <h6 class = "floatingElementTop">{bottom}</h6>
+    </div>"""
+
 def main():
     i = 0
     postHTML = ""
@@ -160,6 +169,7 @@ def main():
         else:
             postHTML = postHTML + mded
         i = i + 1
+    postHTML = getSpecialAnnouncementHTML("Introducing TrumpScript", "A Satirical Programming Language", "Macalester College • Olin-Rice Science Hall • Room 254", "Friday, February 28, 2025 • 10:10 A.M.") + postHTML
     createMain(postHTML)
     makeRSS(rssArticles)
     createArchive()
