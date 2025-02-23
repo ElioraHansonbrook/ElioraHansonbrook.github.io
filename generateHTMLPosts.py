@@ -7,6 +7,27 @@ import time
 import re
 from email import utils
 
+def makeGoogleHappy(title = str, date = str):
+    return """
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": \"""" + title + """\",
+        "image": [
+            "https://hansonbrook.com/Media/PreviewImage.png"
+        ],
+        "datePublished": \"""" + date + """\",
+        "dateModified": \"""" + date + """\",
+        "author": [{
+          "@type": "Person",
+          "name": "Eliora Hansonbrook",
+          "url": "https://hansonbrook.com"
+        }]
+    }
+    </script>
+    """
+
 def titelize(string=str):
     return string.title().replace("-", " ").replace(" And ", " and ").replace(" The ", " the ").replace(" Of ", " of ")
 
@@ -165,7 +186,7 @@ def main():
         file = open("Posts/" + postName + ".html", 'w')
         acc = generatePage(mded)
         acc = acc.replace("<title>Eliora Hansonbrook</title>", "<title>" + name + " – Eliora Hansonbrook</title>\n\t\t<meta property=\"og:title\" content=\"" + name + "\">\n\t\t<meta property=\"og:type\" content=\"article\">\n\t\t<meta property=\"og:url\" content=\"https://hansonbrook.com/Posts/" + postName + "\">\n\t\t<meta property=\"og:image\" content=\"https://hansonbrook.com/Media/PreviewImage.png\">\n\t\t<meta property=\"og:sitename\" content=\"Eliora Hansonbrook\">")
-        acc = acc.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", "<meta name=\"description\" content=\"" + str(re.split("\n", mded)[-1]).replace("<p>", "").replace("</p>", "") + "\">")
+        acc = acc.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", "<meta name=\"description\" content=\"" + str(re.split("\n", mded)[-1]).replace("<p>", "").replace("</p>", "") + "\">" + makeGoogleHappy(name, date))
         file.write(acc)
         file.close()
         if i < len(os.listdir("Blogposts")) - 1:
