@@ -134,8 +134,12 @@ def getSpecialAnnouncementHTML(title = str, subtitle = str, top = str, bottom = 
     <div class = "specialAnnouncement">
         <h1>{title}</h1>
         <h4>{subtitle}</h4>
-        <h6 class = "floatingElementBottom">{top}</h6>
-        <h6 class = "floatingElementTop">{bottom}</h6>
+        <div class = "floatingElementTop">
+            <h6>{top}</h6>
+        </div>
+        <div class = "floatingElementBottom">
+            <h6>{bottom}</h6>
+        </div>
     </div>"""
 
 def main():
