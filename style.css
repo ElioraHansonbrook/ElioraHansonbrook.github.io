@@ -254,26 +254,28 @@ p {
 
 .floatingElementBottom {
   position: absolute;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  display: flex; /* Use flexbox for vertical centering */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  height: 10%;
   width: 100%;
   background-color: rgb(5, 5, 61);
   color: white;
-  bottom: -30px;
+  bottom: 0;
   pointer-events: none;
-  z-index: 1; /*Ensures its on top if other elements exist*/
+  z-index: 1;
 }
 
 .floatingElementTop {
   position: absolute;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  display: flex; /* Use flexbox for vertical centering */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  height: 10%;
   width: 100%;
   background-color: rgb(5, 5, 61);
   color: white;
-  top: -30px;
+  top: 0;
   pointer-events: none;
-  z-index: 1; /*Ensures its on top if other elements exist*/
+  z-index: 1;
 }
