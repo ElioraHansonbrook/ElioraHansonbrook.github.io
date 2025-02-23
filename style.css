@@ -242,14 +242,17 @@ p {
     text-decoration: none;
   }
 
-  .specialAnnouncement {
+.specialAnnouncement {
     outline-color: rgb(5, 5, 61);
     outline-width: 5px;
     outline-style: solid;
-    align-content: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
     padding-top: 40px;
     margin-bottom: 100px;
     position: relative;
+    flex-direction: column;
 }
 
 .floatingElementBottom {
