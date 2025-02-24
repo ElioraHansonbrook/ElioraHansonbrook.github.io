@@ -54,7 +54,13 @@ h6 {
 body {
   background-color:rgb(241, 241, 235);
   padding: 5%;
-  padding-top: 108px;
+  padding-top: 0px;
+}
+
+@media only screen and (min-width: 1001px) {
+  body {
+    padding-top: 108px;
+  }
 }
 
 p {
@@ -265,7 +271,6 @@ p {
   text-align: center;
   padding-top: 40px;
   margin-bottom: 100px;
-  height: 130px;
   position: relative;
   flex-direction: column;
 }
