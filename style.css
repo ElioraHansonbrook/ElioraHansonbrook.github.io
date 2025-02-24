@@ -1,20 +1,26 @@
 h1 {
-  font-family: "Newsreader", Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
   text-align: center;
   color: rgb(5, 5, 61);
 }
 
 h2 {
   padding-top: 30px;
-  font-family: "Newsreader", Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
   color: rgb(5, 5, 61);
 }
 
 h4 {
   color: rgb(107, 107, 107);
+  font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
   text-align: center;
   padding-bottom: 32px;
   pointer-events: none;
+}
+
+h6 {
+  font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
+  color: white;
 }
 
 .space {
@@ -53,9 +59,10 @@ body {
 
 p {
   text-indent: 20px;
+  font-size: 17px;
   text-align: justify;
-  font-family: "Newsreader", Georgia, 'Times New Roman', Times, serif;
-  line-height: 130%;
+  font-family: 'Baskerville', 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
+  line-height: 140%;
   align-items: center;
   max-width: 750px;
 }
@@ -258,6 +265,7 @@ p {
   text-align: center;
   padding-top: 40px;
   margin-bottom: 100px;
+  height: 130px;
   position: relative;
   flex-direction: column;
 }
@@ -267,7 +275,7 @@ position: absolute;
 display: flex; /* Use flexbox for vertical centering */
 align-items: center; /* Vertically center content */
 justify-content: center; /* Horizontally center content */
-height: 10%;
+height: 15%;
 width: 100%;
 background-color: rgb(5, 5, 61);
 color: white;
@@ -281,7 +289,7 @@ position: absolute;
 display: flex; /* Use flexbox for vertical centering */
 align-items: center; /* Vertically center content */
 justify-content: center; /* Horizontally center content */
-height: 10%;
+height: 15%;
 width: 100%;
 background-color: rgb(5, 5, 61);
 color: white;

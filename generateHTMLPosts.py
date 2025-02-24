@@ -152,14 +152,14 @@ def create404():
 
 def getSpecialAnnouncementHTML(title = str, subtitle = str, top = str, bottom = str):
     return f"""
-    <div class = "specialAnnouncement">
-        <h1>{title}</h1>
-        <h4>{subtitle}</h4>
+    <div class = "specialAnnouncement" aria-hidden="true">
+        <h1 aria-hidden="true">{title}</h1>
+        <h4 aria-hidden="true">{subtitle}</h4>
         <div class = "floatingElementTop">
-            <h6>{top}</h6>
+            <h6 aria-hidden="true">{top}</h6>
         </div>
         <div class = "floatingElementBottom">
-            <h6>{bottom}</h6>
+            <h6 aria-hidden="true">{bottom}</h6>
         </div>
     </div>"""
 
