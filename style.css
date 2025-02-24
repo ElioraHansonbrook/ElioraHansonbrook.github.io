@@ -48,6 +48,7 @@ h4 {
 body {
   background-color:rgb(241, 241, 235);
   padding: 5%;
+  padding-top: 108px;
 }
 
 p {
@@ -225,8 +226,12 @@ p {
   text-align: center;
   text-decoration: none;
   color: rgb(47, 47, 176);
-  font-size: 2;
+  font-size: 1;
   pointer-events: all;
+}
+
+.logoFont {
+  font-size: 30px;
 }
 
 .bigLink :link {
