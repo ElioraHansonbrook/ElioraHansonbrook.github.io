@@ -29,7 +29,7 @@ def makeGoogleHappy(title = str, date = str):
     """
 
 def titelize(string=str):
-    return string.title().replace("-", " ").replace(" And ", " and ").replace(" The ", " the ").replace(" Of ", " of ")
+    return string.title().replace("-", " ").replace(" And ", " and ").replace(" The ", " the ").replace(" Of ", " of ").replace("Trumpscript", "TrumpScript")
 
 def generateRSSarticle(name, date, content=str):
     dateB = datetime.date(int(date[:4]), int(date[5:7]), int(date[8:10]))
@@ -130,8 +130,17 @@ def createArchive():
     acc = """<h1>Archive</h1>
     <div class=\"archive\">
     <div class=\"miniSpace\"></div>"""
-    for post in os.listdir("Blogposts"):
+    currMonth = ""
+    dir = os.listdir("Blogposts")
+    dir.sort()
+    dir.reverse()
+    for post in dir:
         date = post[:10]
+        month = date[5:7]
+        postMonth = calendar.month_name[int(month)] + " " + date[:4]
+        if postMonth != currMonth:
+            acc = acc + f"\n<h3>{postMonth}</h3>\n"
+            currMonth = postMonth
         name = titelize(post[11:].removesuffix(".md"))
         acc += f"\n <a href=Posts/{post.removesuffix(".md")}.html class=\"archiveItem\">{name}</a>"
     acc = acc + "\n</div>"
@@ -167,7 +176,10 @@ def main():
     i = 0
     postHTML = ""
     rssArticles = []
-    for post in os.listdir("Blogposts"):
+    dir = os.listdir("Blogposts")
+    dir.sort()
+    dir.reverse()
+    for post in dir:
         date = post[:10]
         name = titelize(post[11:].removesuffix(".md"))
         file = open("Blogposts/" + post, 'r')
@@ -189,12 +201,13 @@ def main():
         acc = acc.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", "<meta name=\"description\" content=\"" + str(re.split("\n", mded)[-1]).replace("<p>", "").replace("</p>", "") + "\">" + makeGoogleHappy(name, date))
         file.write(acc)
         file.close()
-        if i < len(os.listdir("Blogposts")) - 1:
+        if i < 4:
             postHTML = postHTML + mded + "\n<div class=\"space\"></div>\n"
-        else:
+        elif i == 5:
             postHTML = postHTML + mded
         i = i + 1
-    postHTML = getSpecialAnnouncementHTML("Introducing TrumpScript", "A Satirical Programming Language", "Macalester College • Olin-Rice Science Hall • Room 254", "Friday, February 28, 2025 • 10:10 A.M.") + postHTML
+    #postHTML = getSpecialAnnouncementHTML("Introducing TrumpScript", "A Satirical Programming Language", "Macalester College • Olin-Rice Science Hall • Room 254", "Friday, February 28, 2025 • 10:10 A.M.") + postHTML
+    postHTML = postHTML + "\n<div class=\"optionsBox\"><h3><a href=\"../archive.html\">See Older Posts in the Archive</a></h3></div>\n"
     createMain(postHTML)
     makeRSS(rssArticles)
     createArchive()

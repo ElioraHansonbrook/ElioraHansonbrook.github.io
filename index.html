@@ -3,7 +3,7 @@
     <head>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="../style.css?v=8">
+        <link rel="stylesheet" href="../style.css?v=9">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -42,17 +42,65 @@
         </div>
         <div class = "mainContent">
             <div>
+<div class="postInfo">
+<h1 class="bigLink"><a href="../Posts/2025-02-28-trumpScript:-a-satirical-programming-language.html">TrumpScript: A Satirical Programming Language</a></h1>
+<h4 class="postInfo">Published February 28, 2025</h4>
+</div>
+<p><em>For those of you who were able to attend my TrumpScript presentation on Friday, </em><strong><em>thank you!</em></strong><em> As promised, here is a more detailed technical report on the language.</em></p>
+<p>TrumpScript is a concurrently compiled, statically typed, and procedural programming language written in Swift and C++. Unlike single-pass languages, TrumpScript is designed for parallel compilation. Because of an extended development process, TrumpScript has several different versions. For the sake of this discussion, I will refer to these variants as Implementations A, B, and C. While these are not implementations in the typical sense of the word – there are significant differences between each – they do share similar concepts and some code. Implementation A is interpolated only; Implementation B is incomplete. Implementation C, which was presented on Friday, should be considered the canonical version of TrumpScript.</p>
+<p>In Implementation A, function, symbol, type, and operator tables are generated concurrently, and code is executed sequentially. Implementation A supports limited interpreter action, including function calls. Implementation C, on the other hand, is compiled using an L.L.V.M. intermediate representation (I.R.).</p>
+<h2>Using TrumpScript</h2>
+<p>TrumpScript is extremely C-like in nature. The terminology of TrumpScript, however, reflects its status as a satirical language. To declare a new constant, use the following syntax:</p>
+<pre><code>fact foo = 12
+</code></pre>
+<p>Similarly, a variable can be declared as follows:</p>
+<pre><code>altfact bar = 12
+</code></pre>
+<p>Explicit type declarations are not needed in TrumpScript; types are implicitly identified. To create a disfunction, simply type:</p>
+<pre><code>disfunc some() -&gt; Huge {
 
-    <div class = "specialAnnouncement" aria-hidden="true">
-        <h1 aria-hidden="true">Introducing TrumpScript</h1>
-        <h4 aria-hidden="true">A Satirical Programming Language</h4>
-        <div class = "floatingElementTop">
-            <h6 aria-hidden="true">Macalester College • Olin-Rice Science Hall • Room 254</h6>
-        </div>
-        <div class = "floatingElementBottom">
-            <h6 aria-hidden="true">Friday, February 28, 2025 • 10:10 A.M.</h6>
-        </div>
-    </div><div class="postInfo">
+    indict 32
+
+}
+</code></pre>
+<p>The language is relatively simple, but it is quickly developing as I continue to expand the standard library (std in TrumpScript parlance). Loading in a file from the std is relatively simple, as demonstrated here with the math module:</p>
+<pre><code>tariff math
+</code></pre>
+<p>TrumpScript is capable of performing basic operations. In Implementations A and B, the programmer is able to define custom operators. This is a long-term goal for the current implementation, but is not yet complete. Similarly, although functions can be called in implementations A and B, function calling is not currently supported in implementation C. Steps have been made to rectify this situation, but I am not there quite yet.</p>
+<p>TrumpScript operators are quite adept, and are able to differentiate between different input and output types, acknowledge precedence, and more. Thus the function</p>
+<pre><code>@main disfunc main() -&gt; Huge {
+
+    indict 1 + 3 * 12 + 6
+
+}
+</code></pre>
+<p>would indict a value of <code>43</code> when called. Supported types currently include <code>Huge</code> (a 64-bit integer value), <code>Claim</code> (a boolean value, which may be set either to <code>wrong</code> or <code>right</code>), and <code>Covfefe</code> (a double-precision floating-point value). Custom type support is a possible future direction for Implementation C, and one supported to some extent by Implementation A.</p>
+<h2>Concurrent Compilation Background</h2>
+<p>For Implementation A’s concurrent interpretation of TrumpScript, I made use of concurrency features in the Swift programming language. These features were introduced to Swift relatively recently, but enable safe and modern concurrent approaches.</p>
+<p>Implementations A and C both make use of async/await. Async/await is a model for achieving task-based concurrency. In an asynchronous await model, programmers identify points where it is safe to suspend execution on one function and resume or start execution on another.</p>
+<p>The async/await paradigm does not inherently make code multithreaded. The purpose of the async/await model instead ensures that multithreaded coding is thread-safe. By defining arbitrary points where execution can be suspended, async/await ensures that the programmer does not need to worry about execution being suspended at other points. Yet although the paradigm is mostly effective, it does not guarantee thread safety: even when using async/await, race conditions remain possible.</p>
+<p>Async/await is a relatively new approach to concurrency, developed during the aughts. The paradigm’s greatest benefit is that it can be added to code relatively easily, with minimal boilerplate code. Nevertheless, the async/await model continues to be improved. <a href="https://doi.org/10.1016/j.jlamp.2019.03.002">Haller et al. 2019</a> identified future improvements which could be made to the model, specifically by integrating async/await with observable objects, in order to enable asynchronous streams of programming.</p>
+<p>In Swift, the async/await model allows for another key programming paradigm to be introduced: the actor. As explained by <a href="https://doi.org/10.1145/3001886.3001890">De Koster et al. 2016</a>, actors rely on a principle of isolation. Actors help prevent race conditions by preventing their internal state from being written to by anything other than their own functions. Moreover, actors may only execute a single function at a time; any function called on an actor is added to a sequentially executed queue. This means that although actors are thread-safe, they can be performance bottlenecks for multithreaded code.</p>
+<p>Swift’s implementation of actors is relatively intuitive. Unfortunately, however, the constraints inherent to using actors make converting an existing type into an actor a disfavorable proposition. Nevertheless, actors are found in all implementations of TrumpScript, and are key to enabling multithreaded interpretation and compilation.</p>
+<p>Although actors and async/await options are useful for ensuring thread safety, they do not enable concurrency by themselves. Swift allows programmers the options of directly creating threads, as well as a task model.</p>
+<p>Swift’s task model provides a useful abstraction for threads; it can make use of so-called ”virtual threads” and manages the actual number of threads used based on available system resources. Tasks can be created within the context of any function, but for optimal performance, it is best to create them within a TaskGroup, which can be instructed to execute its tasks in a number of different ways.</p>
+<p>In Implementation A, for example, a TaskGroup is used to effectively construct an implicit barrier guaranteeing specific state promises before executing it constructs the symbol table. A similar approach is intended for use with Implementation C, which already has actors and async/await compliant functions ready for use.</p>
+<h2>Language Development</h2>
+<p>All TrumpScript implementations build lookup tables early in the compilation or interpretation process. These lookup tables use a combination of sets and dictionaries, both of which have <code>O(1)</code> performance time in Swift when used to look up values.</p>
+<p>Unfortunately, however, Swift’s sets and dictionaries are not thread-safe. In order to use them safely, I include them either as properties in actors, or, as in one case in Implementation C, on a class restricted to use on a single thread. This approach allows me to safely use these high performance structures despite their lack of multithreaded safety guarantees.</p>
+<p>As previously discussed, there is significant overlap between different implementations of TrumpScript. This overlap is particularly noteworthy in the first part of compilation: the lexer.</p>
+<p>Tokenizing and delineating code is the first step in all three implementations of TrumpScript. The design of tokens has evolved significantly, however; whereas Implementations A and B used custom token enumerations, Implementation C uses a simple structure wrapper around a text value associated with dozens of computed boolean properties. This approach allows me to easily and elegantly adjust my regex matching without needing to worry about multiple occurrences of the same check throughout my codebase.</p>
+<p>All variants of TrumpScript are careful to record user-observed line numbers. This is used to ensure high-quality error checks, particularly in Implementations A and B. (Implementation C currently relies on a whole lot of <code>fatalError(:_)</code> calls, but this is expected to change in the near future.)</p>
+<p>Parallel compilation is not yet fully functional for implementation C, but it is almost ready, and will follow the design used in Implementation A, which builds tables in several groups: in each group, tables are generated independently; each group has dependencies on tables introduced in earlier groups. Implementation A uses a <code>generate()</code> function to prepare for interpretation; Implementation C uses a similar <code>compile(:_)</code> function to pipeline the TrumpScript code to machine code.</p>
+<p>Although traditional strong/weak scalability testing is not appropriate for task-based concurrency, the parallel version of the <code>generate()</code> method in Implementation A is noticeably faster than the linear version, despite the fact that they ultimately perform the exact same tasks. Performance improvements can be measured by analyzing the time taken to complete all code in the generate method. Over multiple tests, performance improvements in the parallel version averaged 23 percent faster than the linear equivalent.</p>
+<p>To enable compilation in Implementation C, I made use of the L.L.V.M. abstract assembly language. L.L.V.M. is an efficient approach to compilation because of its broad usage, robust support, and plentiful compiler targets. Rather than using L.L.V.M. code generation options, I opted to generate I.R. through my own files and pass my IR directly to the L.L.V.M. code, which I called from my C++ file. In turn, Swift was able to call my C++ function thanks to a bridging header.</p>
+<p>In order to maximize the efficiency of my compiled code, I have the L.L.V.M. A.P.I. perform multiple optimization passes to fold constants, to remove unnecessary stack allocations, and to maximize computational speed and efficiency. All told, the resulting assembly code is remarkably efficient.</p>
+<h2>Acknowledgements</h2>
+<p>The satire and technical complexity of TrumpScript have made it an exciting project. I imagine I will continue working on it in the future. But even at its current state, quite a few people deserve thanks for their part in bringing it to life.</p>
+<p>My thanks to the advice and support of Professors Paul Cantrell, Libby Shoop, Jed Carlson, and Lauren Milne, all of Macalester College. Thank you to the many people who suggested hilarious terminology and laughed alongside me as I worked on the language and my presentation. Building such a complex system is no simple feat, and I couldn’t have it without so many wonderful people working alongside me.</p>
+<p>Finally, thank you to my brother, Milo, who flew halfway across the United States to see me present TrumpScript. It’s been great hanging out with you, and thank you for putting up with me.</p>
+<div class="space"></div>
+<div class="postInfo">
 <h1 class="bigLink"><a href="../Posts/2025-02-22-when-parties-party.html">When Parties Party</a></h1>
 <h4 class="postInfo">Published February 22, 2025</h4>
 </div>
@@ -107,26 +155,6 @@
 <p>Running the world’s largest economy (measured by nominal G.D.P.) is a complicated job. But I think that it is an indisputable political miscalculation to privilege the economic complaint, no matter how legitimate, of a small minority of one’s political supporters at the expense of the entire country’s economic future.</p>
 <div class="space"></div>
 <div class="postInfo">
-<h1 class="bigLink"><a href="../Posts/2025-02-08-between-the-river-and-the-ceasefire.html">Between the River and the Ceasefire</a></h1>
-<h4 class="postInfo">Published February 8, 2025</h4>
-</div>
-<p>Three weeks into the six-week Israel-Hamas ceasefire agreement, the situation is growing dicy. The agreement, which once looked like a promising beginning to a long-term pause in the war, now seems like it may simply prove a temporary lull. Worse, it seems possible that, thanks to Hamas, the ceasefire may not even survive its intended six weeks.</p>
-<p>After President Trump’s <a href="https://apnews.com/article/israel-trump-gaza-netanyahu-169d497ac07760ccb9724bef5982338a">recent statement</a> expressing interest in taking control of the Gaza Strip, Hamas has few good options. The organization, which has a history of prioritizing <a href="https://www.wsj.com/world/middle-east/gaza-chiefs-brutal-calculation-civilian-bloodshed-will-help-hamas-626720e7">public opinion</a> over conventional military success, is likely to prefer a conflict with Israel to mass exodus of Palestinians from the Gaza Strip and a loss of geopolitical relevance. </p>
-<p>If Hamas believes President Trump is serious about taking control over the Gaza Strip, the most rational position for the organization is to continue the war. That leaves the organization with a conundrum, however: if Hamas violates the ceasefire first, it may well lead to the U.S. directly intervening in the conflict. The pressures being exerted on Hamas, then, seem destined to drive it to do exactly what it appears to be doing: manipulating Israel into violating the ceasefire.</p>
-<h2>The Ceasefire</h2>
-<p>As a reminder, the crux of the <a href="https://apnews.com/article/gaza-israel-palestinians-ceasefire-war-cb56a3da64e144492decfffc40c589cf">ceasefire deal</a> is a hostage exchange: for each of the thirty-three hostages Hamas will release as part of the agreement, Israel will release either thirty or fifty Palestinian prisoners, depending on the hostage being released. As part of the ceasefire agreement, Israel has withdrawn from much of the Gaza Strip, allowing Hamas to reassert control over much of the Strip.</p>
-<p>The terms of the deal appear, at first blush, broadly advantageous to Hamas. Yet the cease-fire agreement also allows Israel to save face. Israel stated two major military objectives in prosecuting its war against Hamas: to recover the hostages and to dismantle the quasi-governmental terrorist organization. On the first front, Israel has broadly failed. Although the I.D.F. successfully recovered a handful of hostages, high profile failures, including the <a href="https://www.cnn.com/2023/12/15/middleeast/idf-accidentally-kills-hostages-gaza/index.html">accidental killing of escaped hostages by I.D.F. soldiers</a> have proven the difficulty of accomplishing this objective through direct military force. The safest and most effective way to recover hostages is through negotiation.</p>
-<p>On the second front, however, Israel set itself an impossible task. Completely destroying Hamas was never a serious possibility, given its nature as a multi-national organization. What Israel accomplished instead – killing, by U.S. estimates, <a href="https://www.timesofisrael.com/us-said-to-believe-israel-killed-just-20-30-of-hamas-terrorists-in-gaza-fighting/">more than 10,000 enemy combatants</a>, including October 7th mastermind Yahya Sinwar – was likely as close to achieving this goal as it could come. Continuing to prosecute the war in the Gaza Strip serves little purpose other than furthering Israel’s international isolation.</p>
-<p>Despite a nominally favorable ceasefire deal, Hamas seems dissatisfied with letting sleeping dogs lie. The organization has released its hostages in humiliating and <a href="https://www.cbsnews.com/news/israel-hamas-gaza-ceasefire-3rd-hostage-release-prisoner-exchange/">unacceptable</a> ways. Some hostages <a href="https://www.bbc.com/news/articles/c6267kyp0eko">were dressed up in military fatigues</a>, some forced to <a href="https://www.cnn.com/2025/01/30/middleeast/israel-gaza-hostage-release-chaos-intl-latam/index.html">march through an angry crowd</a>, others were <a href="https://www.nytimes.com/2025/02/08/world/middleeast/israel-hamas-hostages-prisoners.html">forced to deliver speeches at gunpoint</a> directly before their release. These actions don’t just demean the hostages; they endanger the ceasefire agreement itself. By turning hostage releases into spectacles, Hamas is vindicating the Israeli far-right, <a href="https://www.nbcnews.com/news/world/israel-far-right-hostage-families-cease-fire-negotiation-rcna126486">which opposed a ceasefire deal</a> in the first place. If Prime Minister Netanyahu chooses to use military force to punish Hamas, he will violate the terms of the ceasefire. If he simply allows them to continue as they are doing, his already struggling far-right coalition in the Knesset may collapse.</p>
-<p>Ultimately, Hamas’ hostage releases seem calculated to exert exactly the sort of domestic political pressure on Israeli leaders that could lead to them violating the ceasefire agreement. And while Hamas was already dramatizing hostage releases, it seems likely that the organization will double down on that strategy in the wake of President Trump’s announcement.</p>
-<p>Should Israel actually violate the ceasefire agreement, the results would be catastrophic for it. It is a distinct possibility that Israel violating a ceasefire agreement would result in both economic sanctions and political censure. South Africa’s case against Israel in the International Court of Justice would be strengthened, as would the International Criminal Court case against Mr. Netanyahu.</p>
-<p>In traditional military terms, the results of Israel violating the ceasefire agreement could be catastrophic for Hamas, as well. But Hamas is not fighting a war with conventional military measures of success. Hamas is trying to win the war for public opinion, and, unfortunately for Israel, Hamas seems to be winning. If Israel breaches a ceasefire agreement, regardless of the domestic pressure its leaders may be experiencing, everyday international observers will likely miss that essential context. Instead, they will likely perceive Israel’s actions as yet another instance of misconduct. And then they’ll go vote for politicians who are unfriendly towards Israel.</p>
-<h2>Where We Are Now</h2>
-<p>It’s impossible to know for certain whether I am correct about Hamas’ aims. There is no question that Israel and Hamas hold deep animosity for, and low opinions of, one another, however. In this light, I struggle to see how Hamas could not imagine that its management of hostage releases is endangering the ceasefire. Particularly after well-documented Israeli complaints on the subject.</p>
-<p>I want to believe that the ceasefire will last beyond the first six weeks. But President Trump’s declaration of interest in acquiring Gaza threatens Hamas’ territorial sovereignty and geopolitical relevance. Hamas has opposed Palestinian exodus from the Gaza Strip throughout the war. If Hamas is a rational actor, it will almost certainly prefer an endless, meaningless, brutal war to a peace without a Palestine.</p>
-<p>Baiting Israel may not even be particularly difficult: the Israeli far-right would be more than happy to continue the war in Gaza. After all, there is a nearly two decade precedent for Hamas and the Israeli far-right to tacitly collaborate. The Israeli and the Palestinian far-right may hate each other, but they can agree on one thing: there should only be one state between the river and the sea.</p>
-<div class="space"></div>
-<div class="postInfo">
 <h1 class="bigLink"><a href="../Posts/2025-02-02-two-weeks.html">Two Weeks</a></h1>
 <h4 class="postInfo">Published February 2, 2025</h4>
 </div>
@@ -141,6 +169,8 @@
 <p>After three particularly difficult days, I decided continuing that way was untenable. I needed to channel my angst into something substantial. That something substantial is this blog. Unlike traditional blogs, I’m creating this blog for myself. It’s still accessible to the public, of course, but my primary audience is my own well being. Although I anticipate writing primarily about politics, it’s likely I’ll also touch on many other topics which interest me. Expect pieces on linguistics, economics, and computer science. I might also write about my personal life and publish both literary and visual art I create.</p>
 <p>You’ll probably disagree with me sometimes. That’s okay. People <em>should</em> disagree with one another. But also, this website is for me. You’re welcome to come and take a look to see what I’m up to, and I look forward to your thoughtful comments and criticisms. I fervently believe that a core component of a healthy democracy is a healthy political discourse, and I welcome your feedback. Ultimately, however, I’ll publish what I want to publish.</p>
 <p>At the college I attend, students spray paint a rock in the center of campus with messages. The current message? “America is bleeding.” If our beautiful country is bleeding, I think the best way to stifle the bleeding is by sharing.</p>
+<div class="optionsBox"><h3><a href="../archive.html">See Older Posts in the Archive</a></h3></div>
+
                 <div class = "bottomText">
                     <p class = "bottomText">©2025 Eliora Hansonbrook. All Rights Reserved.</p>
                 </div>
