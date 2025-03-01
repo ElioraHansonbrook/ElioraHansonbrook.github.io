@@ -38,22 +38,25 @@ def generateRSSarticle(name, date, content=str):
     dateB = utils.formatdate(timeStamp+3600*6)
     xml = "\n<item>\n<title>"+ name + "</title>\n"
     xml += "<pubDate>" + str(dateB) + "</pubDate>\n"  # Add publication date
-    xml += "<author>Eliora Hansonbrook</author>\n"  # Add byline
+    xml += "<author>eliora@hansonbrook.com (Eliora Hansonbrook)</author>\n"  # Add email
     xml += "<description><![CDATA[" + content.replace("../", "https://hansonbrook.com/") + "]]></description>\n"  # Add content/description
+    xml += "<guid>https://hansonbrook.com/Posts/" + date + "-" + name.replace(" ", "-").lower() + "</guid>\n"
     xml += "<link>https://hansonbrook.com/Posts/" + date + "-" + name.replace(" ", "-").lower() + "</link>\n"
     xml += "</item>\n"
     return xml
 
 def makeRSS(articles):
-    xml = """<?xml version="1.0"?>
+    xml = f"""<?xml version="1.0"?>
     <rss version="2.0">
     <channel>
     <title>Eliora Hansonbrook</title>
     <link>https://hansonbrook.com</link>
     <description>The latest posts from the blog</description>
     <language>en</language>
+    <lastBuildDate>{datetime.datetime.now()}</lastBuildDate>
+    <category>Politics</category>
     <copyright>©2025 Eliiora Hansonbrook. All Rights Reserved.</copyright>
-    <managingEditor>eliora@hansonbrook.com</managingEditor>"""
+    <managingEditor>eliora@hansonbrook.com (Eliora Hansonbrook)</managingEditor>"""
     for article in articles:
         xml += article
     xml += """
@@ -201,7 +204,7 @@ def main():
         acc = acc.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", "<meta name=\"description\" content=\"" + str(re.split("\n", mded)[-1]).replace("<p>", "").replace("</p>", "") + "\">" + makeGoogleHappy(name, date))
         file.write(acc)
         file.close()
-        if i < 4:
+        if i < 5:
             postHTML = postHTML + mded + "\n<div class=\"space\"></div>\n"
         elif i == 5:
             postHTML = postHTML + mded

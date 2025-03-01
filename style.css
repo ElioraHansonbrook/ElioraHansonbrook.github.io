@@ -1,6 +1,7 @@
 h1 {
   font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
   text-align: center;
+  text-indent: 0px;
   color: rgb(5, 5, 61);
 }
 
@@ -10,12 +11,20 @@ h2 {
   color: rgb(5, 5, 61);
 }
 
+h3 {
+  font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
+}
+
 h4 {
   color: rgb(107, 107, 107);
   font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
   text-align: center;
   padding-bottom: 32px;
   pointer-events: none;
+}
+
+h5 {
+  font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
 }
 
 h6 {
@@ -305,4 +314,111 @@ color: white;
 top: 0;
 pointer-events: none;
 z-index: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color:rgb(20, 20, 30);
+  }
+  h1 {
+    color: rgb(249, 245, 245);
+  }
+  
+  h2 {
+    color: rgb(249, 245, 245);
+  }
+
+  h3 {
+    color: rgb(249, 245, 245);
+  }
+  
+  h4 {
+    color: rgb(249, 245, 245);
+  }
+
+  h5 {
+    color: rgb(249, 245, 245);
+  }
+  
+  h6 {
+    color: white;
+  }
+
+  p {
+    color: rgb(249, 245, 245);
+  }
+
+  .mainContent :link {
+    color: rgb(249, 245, 245);
+    text-decoration-color: rgb(151, 151, 245);
+  }
+
+  .mainContent :visited {
+    color: rgb(249, 245, 245);
+    text-decoration-color: rgb(151, 151, 245);
+  }
+
+  .mainContent :hover {
+    color: rgb(249, 245, 245);
+    text-decoration-color: #d93838;
+  }
+
+  code {
+    color: rgb(249, 245, 245);
+  }
+
+  .bigLink {
+    color: rgb(151, 151, 245);
+  }
+
+  .bigLink :visited {
+    color: rgb(151, 151, 245);
+  }
+
+  .bigLink :link {
+    color: rgb(151, 151, 245);
+  }
+
+  .bigLink :hover {
+    color: rgb(212, 209, 248);
+    text-decoration-color: #d93838;
+  }
+
+  .optionsBox :link {
+    color: rgb(249, 245, 245);
+    text-decoration-color: rgb(151, 151, 245);
+  }
+
+  .optionsBox :visited {
+    color: rgb(249, 245, 245);
+    text-decoration-color: rgb(151, 151, 245);
+  }
+
+  .optionsBox :hover {
+    color: rgb(249, 245, 245);
+    text-decoration-color: #d93838;
+  }
+
+  .topBar :link {
+    color: rgb(249, 245, 245);
+    text-decoration-color: rgb(151, 151, 245);
+  }
+
+  .topBar :visited {
+    color: rgb(249, 245, 245);
+    text-decoration-color: rgb(151, 151, 245);
+  }
+
+  .topBar :hover {
+    color: rgb(249, 245, 245);
+    text-decoration-color: #d93838;
+  }
+
+  .v1 {
+    background-color: #d93838;
+  }
+
+  .bottomText {
+    color: rgb(249, 245, 245);
+  }
 }
