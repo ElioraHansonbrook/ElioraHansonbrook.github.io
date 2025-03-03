@@ -202,6 +202,7 @@ def main():
         acc = generatePage(mded)
         acc = acc.replace("<title>Eliora Hansonbrook</title>", "<title>" + name + " – Eliora Hansonbrook</title>\n\t\t<meta property=\"og:title\" content=\"" + name + "\">\n\t\t<meta property=\"og:type\" content=\"article\">\n\t\t<meta property=\"og:url\" content=\"https://hansonbrook.com/Posts/" + postName + "\">\n\t\t<meta property=\"og:image\" content=\"https://hansonbrook.com/Media/PreviewImage.png\">\n\t\t<meta property=\"og:sitename\" content=\"Eliora Hansonbrook\">")
         acc = acc.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", "<meta name=\"description\" content=\"" + str(re.split("\n", mded)[-1]).replace("<p>", "").replace("</p>", "") + "\">" + makeGoogleHappy(name, date))
+        acc = acc.replace("<link rel=\"manifest\" href=\"/site.webmanifest\">", f"<link rel=\"manifest\" href=\"/site.webmanifest\">\n<link rel=\"canonical\" href=\"https://hansonbrook.com/Posts/{postName}\">")
         file.write(acc)
         file.close()
         if i < 5:
