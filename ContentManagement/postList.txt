@@ -1,0 +1,15 @@
+2025-02-02:
+	Outputs/2025-02-02-two-weeks.html
+2025-02-08:
+	Outputs/2025-02-08-between-the-river-and-the-ceasefire.html
+2025-02-15:
+	Outputs/2025-02-15-protest-against-protectionism.html
+	Outputs/2025-02-15-the-murder-of-sam-nordquist.html
+2025-02-22:
+	Outputs/2025-02-22-when-parties-party.html
+2025-02-28:
+	Outputs/2025-02-28-trumpScript:-a-satirical-programming-language.html
+2025-03-01:
+	Outputs/2025-03-01-a-catastrophic-meeting.html
+2025-03-03:
+	Outputs/2025-03-03-mandatory-babies.html
