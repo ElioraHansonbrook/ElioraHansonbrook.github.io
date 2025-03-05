@@ -1,5 +1,5 @@
 ### [When "Other Duties as Assigned" Takes on a Whole New Meaning](https://www.nytimes.com/2025/03/04/world/asia/china-marriage-companies-childbirth.html)
-The New York Times reports that companies in the People's Republic of China are attempting to regulate the reproductive lives of their workers. One particularly egregious memo, sent by Shandong Shuntian Chemical Group, informs employees:
+Vivian Wang reports in The New York Times that companies in the People's Republic of China are attempting to regulate the reproductive lives of their workers. One particularly egregious memo, sent by Shandong Shuntian Chemical Group, informs employees:
 > 'If you cannot get married and start a family within three quarters, the company will terminate your labor contract[.]'
 Peoples' personal livelihoods are being upended by the P.R.C.'s newly pro-natalist politics. To those of us who believe in individual autonomy and reproductive justice, this is obviously dystopian.
 But at second glance, something else stands out: President Xi's administration isn't asking the companies mentioned in this article to fire unmarried employees. To the contrary, the Times reports that the government has criticized several such actions.
