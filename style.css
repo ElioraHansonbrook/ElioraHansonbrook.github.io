@@ -325,13 +325,24 @@ z-index: 1;
   .mainContent {
     width: 100%;
     inset: 100px;
-}
+  }
+  .center {
+    transform: translateY(9px);
+  }
 }
 
 @media only screen and (max-width: 710px) {
   .topBar {
       width: 93%;
       flex-direction: column;
+      padding-bottom: 75px;
+  }
+
+  .topBar div {
+    padding: 0px;
+    margin: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .bigLink {
@@ -342,6 +353,7 @@ z-index: 1;
   .center {
     margin-top: 0px;
     padding-top: 0px;
+    transform: none;
   }
 }
 
