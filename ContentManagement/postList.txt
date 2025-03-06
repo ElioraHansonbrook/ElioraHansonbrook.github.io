@@ -16,4 +16,5 @@
 2025-03-05:
 	Outputs/2025-03-05-sisi-phean-task.html
 2025-03-06:
+	Outputs/2025-03-06-democracy-dies-in-silence.html
 	Outputs/2025-03-06-sea-ice.html
