@@ -13,3 +13,5 @@
 	Outputs/2025-03-01-a-catastrophic-meeting.html
 2025-03-03:
 	Outputs/2025-03-03-mandatory-babies.html
+2025-03-04:
+	Outputs/2025-03-04-sisi-phean-task.html

@@ -191,55 +191,6 @@ p {
   display: none;
 }
 
-@media only screen and (min-width: 1101px) {
-  .navigationBar {
-      width: 20%;
-      position: fixed;
-      overflow: hidden;
-      right: 30px;
-      top: 30px;
-      padding: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      max-width: 200px;
-      margin: 0;
-  }
-  body {
-    padding-top: 108px;
-  }
-  .mainContent {
-    transform: translateX(-15%);
-  }
-}
-
-@media only screen and (max-width: 1100px) {
-  .topBar {
-      width: 96%;
-      overflow: hidden;
-      right: 30px;
-      top: 30px;
-      padding: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      margin: 0;
-  }
-  .mainContent {
-    width: 100%;
-    inset: 100px;
-}
-}
-
-@media only screen and (max-width: 710px) {
-  .topBar {
-      width: 93%;
-      flex-direction: column;
-  }
-}
-
 .topBar div {
   padding: 15px;
 }
@@ -333,6 +284,65 @@ color: white;
 top: 0;
 pointer-events: none;
 z-index: 1;
+}
+
+@media only screen and (min-width: 1101px) {
+  .navigationBar {
+      width: 20%;
+      position: fixed;
+      overflow: hidden;
+      right: 30px;
+      top: 30px;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      max-width: 200px;
+      margin: 0;
+  }
+  body {
+    padding-top: 108px;
+  }
+  .mainContent {
+    transform: translateX(-15%);
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .topBar {
+      width: 96%;
+      overflow: hidden;
+      right: 30px;
+      top: 30px;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      margin: 0;
+  }
+  .mainContent {
+    width: 100%;
+    inset: 100px;
+}
+}
+
+@media only screen and (max-width: 710px) {
+  .topBar {
+      width: 93%;
+      flex-direction: column;
+  }
+
+  .bigLink {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+
+  .center {
+    margin-top: 0px;
+    padding-top: 0px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
