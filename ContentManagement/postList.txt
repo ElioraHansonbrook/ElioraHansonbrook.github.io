@@ -1,3 +1,15 @@
+	Outputs/2025-02-02-two-weeks.html
+	Outputs/2025-02-08-between-the-river-and-the-ceasefire.html
+	Outputs/2025-02-15-protest-against-protectionism.html
+	Outputs/2025-02-15-the-murder-of-sam-nordquist.html
+	Outputs/2025-02-22-when-parties-party.html
+	Outputs/2025-02-28-trumpScript:-a-satirical-programming-language.html
+	Outputs/2025-03-01-a-catastrophic-meeting.html
+	Outputs/2025-03-03-mandatory-babies.html
+	Outputs/2025-03-05-sisi-phean-task.html
+	Outputs/2025-03-06-democracy-dies-in-silence.html
+	Outputs/2025-03-06-sea-ice.html
+	Outputs/2025-03-07-euro-nato-solidarity.html
 2025-02-02:
 	Outputs/2025-02-02-two-weeks.html
 2025-02-08:
@@ -18,3 +30,5 @@
 2025-03-06:
 	Outputs/2025-03-06-democracy-dies-in-silence.html
 	Outputs/2025-03-06-sea-ice.html
+2025-03-07:
+	Outputs/2025-03-07-euro-nato-solidarity.html

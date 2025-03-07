@@ -320,7 +320,7 @@ def process_post(post_path, output_dir, post_type="Blogposts"):
     with open(post_path, 'r') as file:
         acc = "\n".join(refineMarkers(line) for line in file)
     mded = markdown.markdown(acc)
-    
+
     if mded.splitlines()[0][:2] == "<p":
         acc = f"<div class=\"postInfo\">\n<h1 class=\"bigLink\"><a href=\"../Posts/{post_name}.html\">{name}</a></h1>\n<h4 class=\"postInfo\">Published {makeNiceDateName(date)}</h4>\n</div>\n"
         mded = acc + mded
@@ -413,16 +413,11 @@ def main():
         name, date, mded, post_name = process_post(os.path.join(link_posts_dir, post), output_dir, link_posts_dir)
 
     items = get_html_outputs_after_date(startDate)
-    i = len(items)
     for item in items:
         file = open(f"{item}", 'r')
         contents = file.read()
         file.close()
-        i -= 1
-        if i > 0:
-            postHTML += contents + "\n<div class=\"space\"></div>\n"
-        else:
-            postHTML += contents
+        postHTML += contents + "\n<div class=\"space\"></div>\n"
 
     postHTML += "\n<div class=\"optionsBox\"><h3><a href=\"../archive.html\">See Older Posts in the Archive</a></h3></div>\n"
     createMain(postHTML)
