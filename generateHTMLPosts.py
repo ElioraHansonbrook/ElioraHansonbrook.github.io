@@ -347,7 +347,7 @@ def process_blog_post(post_path, output_dir, posts_dir):
     page_html_path = os.path.join("Posts", f"{post_name}.html")
     with open(page_html_path, 'w') as file:
         page_content = generatePage(mded)
-        page_content = page_content.replace("<title>Eliora Hansonbrook</title>", f"<title>{name} – Eliora Hansonbrook</title>\n\t\t<meta property=\"og:title\" content=\"{name}\">\n\t\t<meta property=\"og:type\" content=\"article\">\n\t\t<meta property=\"og:url\" content=\"https://hansonbrook.com/Posts/{post_name}\">\n\t\t<meta property=\"og:image\" content=\"https://hansonbrook.com/Media/PreviewImage.png\">\n\t\t<meta property=\"og:sitename\" content=\"Eliora Hansonbrook\">")
+        page_content = page_content.replace("<title>Eliora Hansonbrook</title>", f"<title>{name} – Eliora Hansonbrook</title>\n\t\t<meta property=\"og:title\" content=\"{name}\">\n\t\t<meta property=\"og:type\" content=\"article\">\n\t\t<meta property=\"og:url\" content=\"https://hansonbrook.com/Posts/{post_name}\">\n\t\t<meta property=\"og:image\" content=\"https://hansonbrook.com/Media/PreviewImage.png\">")
         page_content = page_content.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", f"<meta name=\"description\" content=\"{str(re.split(r'\n', mded)[-1]).replace('<p>', '').replace('</p>', '')}\">{makeGoogleHappy(name, date)}")
         page_content = page_content.replace("<link rel=\"manifest\" href=\"/site.webmanifest\">", f"<link rel=\"manifest\" href=\"/site.webmanifest\">\n<link rel=\"canonical\" href=\"https://hansonbrook.com/Posts/{post_name}\">")
         file.write(page_content)
