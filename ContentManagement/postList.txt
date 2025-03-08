@@ -21,3 +21,5 @@
 2025-03-07:
 	Outputs/2025-03-07-building-this-blog.html
 	Outputs/2025-03-07-euro-nato-solidarity.html
+2025-03-08:
+	Outputs/2025-03-08-belt-and-road.html
