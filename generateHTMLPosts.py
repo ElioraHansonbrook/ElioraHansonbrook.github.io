@@ -157,9 +157,19 @@ def createArchive():
     file.close()
 
 def create404():
-    page = generatePage(withStr="<h1>404: Page Not Found</h1>")
+    page = generatePage(withStr="<h1>Error 404</h1>\n<h4 class=\"postInfo\">Page Not Found</h4>")
     file = open("404.html", 'w')
     file.write(page)
+    file.close()
+
+def createAbout():
+    file = open("Additional/about.md", 'r')
+    acc = "\n".join(refineMarkers(line) for line in file)
+    mded = markdown.markdown(acc)
+    output_html_path = os.path.join("about.html")
+    with open(output_html_path, 'w') as file:
+        page = generatePage(mded)
+        file.write(page)
     file.close()
 
 def getSpecialAnnouncementHTML(title = str, subtitle = str, top = str, bottom = str):
@@ -316,22 +326,18 @@ def process_post(post_path, output_dir, post_type="Blogposts"):
     post_name = os.path.basename(post_path).removesuffix(".md")
     date = post_name[:10]
     name = titelize(post_name[11:])
-
     with open(post_path, 'r') as file:
         acc = "\n".join(refineMarkers(line) for line in file)
     mded = markdown.markdown(acc)
-
     if mded.splitlines()[0][:2] == "<p":
         acc = f"<div class=\"postInfo\">\n<h1 class=\"bigLink\"><a href=\"../Posts/{post_name}.html\">{name}</a></h1>\n<h4 class=\"postInfo\">Published {makeNiceDateName(date)}</h4>\n</div>\n"
         mded = acc + mded
-
     output_html_path = os.path.join(output_dir, f"{post_name}.html")
     with open(output_html_path, 'w') as file:
         file.write(mded)
-
     updateList(date, output_html_path)
-
     return name, date, mded, post_name
+
 
 def process_blog_post(post_path, output_dir, posts_dir):
     """Processes regular blog posts and generates individual pages."""
@@ -407,7 +413,7 @@ def main():
         rssArticles.append(generateRSSarticle(name, date, mded))
 
     # Process LinkPosts and add them to the main page
-    link_posts_dir = "LinkPosts"
+    link_posts_dir = "Tidbits"
     link_posts = sorted(os.listdir(link_posts_dir), reverse=True)
     for post in link_posts:
         name, date, mded, post_name = process_post(os.path.join(link_posts_dir, post), output_dir, link_posts_dir)
@@ -424,6 +430,7 @@ def main():
     makeRSS(rssArticles)
     createArchive()
     create404()
+    createAbout()
 
 if __name__ == "__main__":
     main()

@@ -85,7 +85,6 @@ code {
   text-align: center;
   text-indent: none;
   font-size: 0.8em;
-  pointer-events: none;
 }
 
 body {
@@ -133,7 +132,7 @@ p {
   text-decoration-color: rgb(47, 47, 176);
 }
 
-.mainContent :hover {
+.mainContent p i :hover {
   color:rgb(5, 5, 61);
   text-decoration-color: #c82626;;
 }
@@ -284,6 +283,10 @@ color: white;
 top: 0;
 pointer-events: none;
 z-index: 1;
+}
+
+.bottomText p {
+  text-indent: 0px;
 }
 
 @media only screen and (min-width: 1101px) {
