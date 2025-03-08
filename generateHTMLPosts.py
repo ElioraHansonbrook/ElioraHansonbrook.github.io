@@ -108,6 +108,15 @@ def generatePage(withStr: str):
 
 def createMain(withStr: str):
     acc = generatePage(withStr)
+    acc = acc.replace("</head>", """\t<script type="application/ld+json">
+            {
+            "@context" : "https://schema.org",
+            "@type" : "WebSite",
+            "name" : "Eliora Hansonbrook",
+            "url" : "https://hansonbrook.com"
+            }
+        </script>
+    </head>""")
     file = open("index.html", 'w')
     file.write(acc)
     file.close()
