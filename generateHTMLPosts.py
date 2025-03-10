@@ -197,6 +197,46 @@ def getSpecialAnnouncementHTML(title = str, subtitle = str, top = str, bottom = 
 def isDateLine(string=str):
     return re.match("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]:", string)
 
+def getAllPostDates():
+    dates = []
+    for dir in ["Blogposts", "Tidbits"]:
+        files = sorted(os.listdir(dir), reverse=True)
+        for post in files:
+            date = post[:10]
+            if not dates.__contains__(date):
+                dates.append(date)
+    dates.sort()
+    return dates
+
+def getAllPostsOnDate(date):
+    posts = []
+    for dir in ["Blogposts", "Tidbits"]:
+        files = sorted(os.listdir(dir), reverse=True)
+        for file in files:
+            if file[:10] == date:
+                posts.append(file)
+    try:
+        with open(f"ContentManagement/{date}.txt", "r") as file:
+            lines = file.readlines()
+            if lines == posts:
+                return posts
+            elif len(lines) == len(posts):
+                return lines
+            else:
+                newLines = []
+                for line in lines:
+                    if not posts.__contains__(line):
+                        newLines.append(line)
+                posts = posts + newLines
+                return posts
+    except FileNotFoundError:
+        file = open(f"ContentManagement/{date}.txt", "w")
+        file.write(''.join(posts))
+        file.close()
+        return posts
+            
+
+
 def updateList(date, filename, outputFile="ContentManagement/postList.txt"):
     """
     Updates the postList.txt file to add a filename under the specified date.
@@ -206,6 +246,16 @@ def updateList(date, filename, outputFile="ContentManagement/postList.txt"):
         filename (str): The filename to add.
         outputFile (str, optional): The path to the postList.txt file. Defaults to "ContentManagement/postList.txt".
     """
+
+    # acc = ""
+    # for date in getAllPostDates():
+    #     acc += f"{date}:\n"
+    #     for post in getAllPostsOnDate(date):
+    #         name = post[:-2]
+    #         name += "html"
+    #         acc += f"\tOutputs/{name}\n"
+    # file = open(outputFile, "w")
+    # file.writelines(acc)
 
     try:
         with open(outputFile, "r") as file:
