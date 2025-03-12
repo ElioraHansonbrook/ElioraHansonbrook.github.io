@@ -1,0 +1,2 @@
+### Whither Kurdistan
+After the recently announced [ceasefire](https://www.bbc.com/news/articles/cgkmg3kmmero) between the Kurdistan Workers' Party (P.K.K.) and Turkey, and today's [announcement](https://www.aljazeera.com/news/2025/3/10/syria-merges-kurdish-led-syrian-democratic-forces-into-state-institutions) that the Syrian Democratic Forces (S.D.F.) will join the Syrian government, hopes for a future state of Kuridstan seem to be on the wane.

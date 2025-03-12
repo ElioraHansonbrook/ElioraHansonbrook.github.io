@@ -137,6 +137,11 @@ p {
   text-decoration-color: #c82626;;
 }
 
+.mainContent p :hover {
+  color:rgb(5, 5, 61);
+  text-decoration-color: #c82626;;
+}
+
 .vl {
   width: 5px;
   background-color: #dd2424;
