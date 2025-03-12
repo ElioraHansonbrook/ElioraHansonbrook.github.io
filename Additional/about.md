@@ -5,7 +5,7 @@ Eliora Hansonbrook is a multidisciplinary intellectual with research interests s
 
 ## This Blog
 This blog was created as a weekend project in February 2025. It is procedurally generated using a Python script and a whole lotta Markdown. Although the code is available on GitHub, it is not production quality, and does not conform to standard Python conventions.
-New long-form posts are published at least once a week. Shorter pieces are posted periodically.
+New long-form posts are published at least once a week. Shorter pieces are posted periodically. Since this blog is an ongoing, *ad hoc* affair, its development often [surprises](https://hansonbrook.com/Posts/2025-03-07-building-this-blog) me in unforseen ways. If you have any thoughts or suggestions, please feel free to contact me.
 
 ## Privacy Policy
 Some information about your connection may be used to estimate the total number of unique visitors to this website, but no cookies are placed on your computer, and no cross-site tracking is performed.
