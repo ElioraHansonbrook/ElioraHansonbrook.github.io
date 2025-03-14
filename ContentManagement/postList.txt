@@ -28,4 +28,5 @@
 2025-03-12:
 	Outputs/2025-03-12-half-decade-covid.html
 2025-03-13:
+	Outputs/2025-03-13-funding.html
 	Outputs/2025-03-13-phase-two.html
