@@ -32,3 +32,6 @@
 	Outputs/2025-03-13-phase-two.html
 2025-03-15:
 	Outputs/2025-03-15-whither-kurdistan.html
+2025-03-16:
+	Outputs/2025-03-16-radio-free-america.html
+	Outputs/2025-03-16-bad-day-for-eastern-europe-leaders.html

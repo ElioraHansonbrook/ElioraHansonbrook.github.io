@@ -30,6 +30,7 @@ The first reference to a country in any given post or tidbit must use its primar
 | Canada | --- | --- | Canadian |
 | Federal Republic of Germany | --- | Germany | German |
 | France | --- | --- | French |
+| Hungary | --- | --- | Hungarian |
 | Iraq | --- | --- | Iraqi |
 | Israel | --- | --- | Israeli |
 | Mexico | --- | --- | Mexican |
@@ -37,6 +38,7 @@ The first reference to a country in any given post or tidbit must use its primar
 | People's Republic of China | P.R.C. | China | Chinese |
 | Republic of Türkiye | --- | Türkiye | Turkish |
 | Russian Federation | --- | Russia | Russian |
+| Serbia | --- | --- | Serbian |
 | Syria | --- | --- | Syrian |
 | Ukraine | --- | --- | Ukrainian |
 | United States | U.S. | --- | American |
@@ -76,5 +78,7 @@ When there is one standard American English spelling for a word, it is used in t
 
 | Spelling | Notes | 
 | --- | ---|
+| Aleksandar Vučić | The president of Serbia |
 | Kyiv | The capital of Ukraine |
+| Viktor Orbán | The prime minister of Hungary |
 | Volodymyr Zelenskyy | The president of Ukraine |
