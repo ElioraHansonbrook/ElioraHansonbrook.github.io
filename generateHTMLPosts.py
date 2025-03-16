@@ -125,12 +125,12 @@ def refineMarkers(text: str):
     acc = ""
     for i in range(len(text)):
         if text[i] == "\"":
-            if text[i+1] != " " and text[i+1] != "\n":
+            if text[i+1] != " " and text[i+1] != "\n" and text[i+1] != "." and text[i+1] != ",":
                 acc = acc + "“"
             else: 
                 acc = acc + "”"
         elif text[i] == "\'":
-            if text[i-1] == " " or text[i-1] == "\n":
+            if text[i-1] == " " or text[i-1] == "\n" or text[i-1] == "\"":
                 acc = acc + "‘"
             else: 
                 acc = acc + "’"
@@ -176,6 +176,16 @@ def createAbout():
     acc = "\n".join(refineMarkers(line) for line in file)
     mded = markdown.markdown(acc)
     output_html_path = os.path.join("about.html")
+    with open(output_html_path, 'w') as file:
+        page = generatePage(mded)
+        file.write(page)
+    file.close()
+
+def createStyleGuide():
+    file = open("Additional/styleGuide.md", 'r')
+    acc = "".join(refineMarkers(line) for line in file)
+    mded = markdown.markdown(acc, extensions=['extra', 'smarty'])
+    output_html_path = os.path.join("styleGuide.html")
     with open(output_html_path, 'w') as file:
         page = generatePage(mded)
         file.write(page)
@@ -490,6 +500,7 @@ def main():
     createArchive()
     create404()
     createAbout()
+    createStyleGuide()
 
 if __name__ == "__main__":
     main()

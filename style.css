@@ -33,6 +33,75 @@ h6 {
   color: white;
 }
 
+p {
+  text-indent: 20px;
+  font-size: 17px;
+  text-align: justify;
+  font-family: 'Baskerville', 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
+  line-height: 150%;
+  align-items: center;
+  max-width: 750px;
+  margin: 2em auto;
+  margin-top: 0px;
+  margin-bottom: 25px;
+}
+
+li {
+  font-size: 17px;
+  text-align: justify;
+  font-family: 'Baskerville', 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
+  line-height: 130%;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+ul li::before {
+  content: "⮑";
+  font-size: 10px;
+  vertical-align: 3px;
+  color: rgb(5, 5, 61);
+  display: inline-block;
+  width: 2em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 30px;
+  text-indent: 0px;
+}
+
+th {
+  color: #c82626;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  text-align: left;
+  border-bottom: 1px solid rgb(5, 5, 61);
+}
+
+table th:first-child {
+    padding-left: 0px;
+}
+
+td {
+  border-bottom: 1px solid rgb(5, 5, 61);
+  color: rgb(5, 5, 61);
+  font-weight: bold;
+}
+
+td + td {
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: rgb(5, 5, 61);
+  font-weight: normal;
+}
+
 blockquote {
   width: 70%;
   margin: 2em auto; /* Center horizontally with auto margins */
@@ -93,18 +162,6 @@ body {
   padding-top: 0px;
 }
 
-p {
-  text-indent: 20px;
-  font-size: 17px;
-  text-align: justify;
-  font-family: 'Baskerville', 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
-  line-height: 145%;
-  align-items: center;
-  max-width: 750px;
-  margin: 2em auto;
-  margin-bottom: -8px;
-}
-
 .navigationBar {
   display: none;
 }
@@ -134,11 +191,11 @@ p {
 
 .mainContent p i :hover {
   color:rgb(5, 5, 61);
-  text-decoration-color: #c82626;;
+  text-decoration-color: #c82626;
 }
 
 .mainContent p :hover {
-  text-decoration-color: #c82626;;
+  text-decoration-color: #c82626;
 }
 
 .vl {
@@ -396,6 +453,28 @@ z-index: 1;
     color: rgb(249, 245, 245);
   }
 
+  li {
+    color: rgb(249, 245, 245);
+  }
+  
+  ul li::before {
+    color: rgb(249, 245, 245);
+  }
+  
+  th {
+    border-bottom: 1px solid rgb(151, 151, 245);
+    color: #d93838;
+  }
+  
+  td {
+    border-bottom: 1px solid rgb(151, 151, 245);
+    color: rgb(249, 245, 245);
+  }
+  
+  td + td {
+    color: rgb(249, 245, 245);
+  }
+
   .mainContent :link {
     color: rgb(249, 245, 245);
     text-decoration-color: rgb(151, 151, 245);
@@ -409,6 +488,10 @@ z-index: 1;
   .mainContent :hover {
     color: rgb(249, 245, 245);
     text-decoration-color: #d93838;
+  }
+
+  .mainContent thead :hover {
+    color: #d93838;
   }
 
   code {
