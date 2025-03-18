@@ -35,3 +35,5 @@
 2025-03-16:
 	Outputs/2025-03-16-radio-free-america.html
 	Outputs/2025-03-16-bad-day-for-eastern-europe-leaders.html
+2025-03-17:
+	Outputs/2025-03-17-resume-in-fighting.html
