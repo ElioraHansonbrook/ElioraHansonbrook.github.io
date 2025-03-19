@@ -37,3 +37,6 @@
 	Outputs/2025-03-16-bad-day-for-eastern-europe-leaders.html
 2025-03-17:
 	Outputs/2025-03-17-resume-in-fighting.html
+2025-03-19:
+	Outputs/2025-03-19-fun-links.html
+	Outputs/2025-03-19-f-thirty-five.html
