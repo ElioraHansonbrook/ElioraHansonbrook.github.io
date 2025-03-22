@@ -40,3 +40,5 @@
 2025-03-19:
 	Outputs/2025-03-19-fun-links.html
 	Outputs/2025-03-19-f-thirty-five.html
+2025-03-22:
+	Outputs/2025-03-22-donald-trump-is-corrosive.html
