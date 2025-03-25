@@ -36,11 +36,15 @@ The first reference to a country in any given post or tidbit must use its primar
 | Mexico | --- | --- | Mexican |
 | Kurdistan | --- | --- | Kurdish |
 | People's Republic of China | P.R.C. | China | Chinese |
+| Republic of Chad | --- | Chad | Chadian |
 | Republic of Türkiye | --- | Türkiye | Turkish |
 | Russian Federation | --- | Russia | Russian |
 | Serbia | --- | --- | Serbian |
+| South Sudan | --- | --- | South Sudanese |
+| Sudan | --- | --- | Sudanese |
 | Syria | --- | --- | Syrian |
 | Ukraine | --- | --- | Ukrainian |
+| United Arab Emirates | U.A.E. | --- | Emirati |
 | United States | U.S. | --- | American |
 
 ## Italics

@@ -29,7 +29,7 @@ def makeGoogleHappy(title = str, date = str):
     """
 
 def titelize(string=str):
-    return string.title().replace("-", " ").replace(" And ", " and ").replace(" The ", " the ").replace(" Of ", " of ").replace("Trumpscript", "TrumpScript")
+    return string.title().replace("-", " ").replace(" And ", " and ").replace(" The ", " the ").replace(" Of ", " of ").replace("Trumpscript", "TrumpScript").replace(" Is ", " is ").replace(" This ", " this ")
 
 def generateRSSarticle(name, date, content=str):
     dateB = datetime.date(int(date[:4]), int(date[5:7]), int(date[8:10]))
