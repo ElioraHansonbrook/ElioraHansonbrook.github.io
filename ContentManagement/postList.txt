@@ -43,4 +43,5 @@
 2025-03-22:
 	Outputs/2025-03-22-donald-trump-is-corrosive.html
 2025-03-24:
+	Outputs/2025-03-24-columns.html
 	Outputs/2025-03-24-sudan.html

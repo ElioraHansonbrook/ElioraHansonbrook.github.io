@@ -1,35 +1,32 @@
-h1 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
   text-align: center;
   text-indent: 0px;
   color: rgb(5, 5, 61);
 }
 
 h2 {
+  text-indent: 15px;
   padding-top: 30px;
-  font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
   color: rgb(5, 5, 61);
 }
 
 h3 {
-  font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
   line-height: 130%;
 }
 
 h4 {
   color: rgb(107, 107, 107);
-  font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
   text-align: center;
   padding-bottom: 32px;
   pointer-events: none;
 }
 
-h5 {
-  font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
-}
-
 h6 {
-  font-family: 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
   color: white;
 }
 
@@ -40,7 +37,6 @@ p {
   font-family: 'Baskerville', 'Hoefler Text', Garamond, Georgia, 'Times New Roman', Times, serif;
   line-height: 150%;
   align-items: center;
-  max-width: 750px;
   margin: 2em auto;
   margin-top: 0px;
   margin-bottom: 25px;
@@ -173,7 +169,7 @@ body {
   inset: 30px;
   display: flex;
   justify-content: center;
-  max-width: 750px;
+  max-width: 30em;
   margin: 0 auto;
 }
 
@@ -284,6 +280,10 @@ body {
   color: rgb(47, 47, 176);
   font-size: 1;
   pointer-events: all;
+}
+
+.bigLink h2 {
+  text-indent: 0px;
 }
 
 .logoFont {
