@@ -438,6 +438,8 @@ def getMainPageStartDate():
     return startDate
 
 def generate_dates_until_today(start_date_str, date_format="%Y-%m-%d"):
+    if start_date_str[8:10] > "28":
+        start_date_str = start_date_str[:7] + "-28"
     start_date = datetime.datetime.strptime(start_date_str, date_format).date()
     now = str(datetime.datetime.now())[:10]
     today = datetime.datetime.strptime(now, date_format).date()
