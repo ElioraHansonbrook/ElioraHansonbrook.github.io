@@ -46,4 +46,5 @@
 	Outputs/2025-03-24-columns.html
 	Outputs/2025-03-24-sudan.html
 2025-03-29:
+	Outputs/2025-03-29-aiming-at-the-denmark.html
 	Outputs/2025-03-29-running-late.html
