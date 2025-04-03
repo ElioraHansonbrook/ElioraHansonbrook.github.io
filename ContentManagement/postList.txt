@@ -48,3 +48,5 @@
 2025-03-29:
 	Outputs/2025-03-29-aiming-at-the-denmark.html
 	Outputs/2025-03-29-running-late.html
+2025-04-03:
+	Outputs/2025-04-03-ten-percent.html

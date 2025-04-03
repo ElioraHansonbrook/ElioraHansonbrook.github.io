@@ -189,6 +189,7 @@ def createStyleGuide():
     with open(output_html_path, 'w') as file:
         page = generatePage(mded)
         file.write(page)
+        file.close()
     file.close()
 
 def getSpecialAnnouncementHTML(title = str, subtitle = str, top = str, bottom = str):
@@ -238,6 +239,7 @@ def getAllPostsOnDate(date):
                     if not posts.__contains__(line):
                         newLines.append(line)
                 posts = posts + newLines
+                file.close()
                 return posts
     except FileNotFoundError:
         file = open(f"ContentManagement/{date}.txt", "w")
@@ -270,6 +272,7 @@ def updateList(date, filename, outputFile="ContentManagement/postList.txt"):
     try:
         with open(outputFile, "r") as file:
             lines = file.readlines()
+            file.close()
     except FileNotFoundError:
         lines = []
 
@@ -304,6 +307,7 @@ def updateList(date, filename, outputFile="ContentManagement/postList.txt"):
 
     with open(outputFile, "w") as file:
         file.writelines(updated_lines)
+        file.close()
 
 
 def get_recent_dates(filepath="ContentManagement/postList.txt", n=5):
@@ -320,6 +324,7 @@ def get_recent_dates(filepath="ContentManagement/postList.txt", n=5):
     try:
         with open(filepath, "r") as file:
             lines = file.readlines()
+            file.close()
     except FileNotFoundError:
         return []
 
@@ -351,6 +356,7 @@ def get_dates_before(target_date, filepath="ContentManagement/postList.txt"):
     try:
         with open(filepath, "r") as file:
             lines = file.readlines()
+            file.close()
     except FileNotFoundError:
         return []
 
@@ -387,6 +393,7 @@ def get_filenames_for_date(target_date, filepath="ContentManagement/postList.txt
                 return acc
             else:
                 acc.append(line.strip())
+    file.close()
     return acc
 
 
@@ -397,6 +404,7 @@ def process_post(post_path, output_dir, post_type="Blogposts"):
     name = titelize(post_name[11:])
     with open(post_path, 'r') as file:
         acc = "\n".join(refineMarkers(line) for line in file)
+        file.close()
     mded = markdown.markdown(acc)
     if mded.splitlines()[0][:2] == "<p":
         acc = f"<div class=\"postInfo\">\n<h1 class=\"bigLink\"><a href=\"../Posts/{post_name}.html\">{name}</a></h1>\n<h4 class=\"postInfo\">Published {makeNiceDateName(date)}</h4>\n</div>\n"
@@ -404,6 +412,7 @@ def process_post(post_path, output_dir, post_type="Blogposts"):
     output_html_path = os.path.join(output_dir, f"{post_name}.html")
     with open(output_html_path, 'w') as file:
         file.write(mded)
+        file.close()
     updateList(date, output_html_path)
     return name, date, mded, post_name
 
@@ -420,6 +429,7 @@ def process_blog_post(post_path, output_dir, posts_dir):
         page_content = page_content.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", f"<meta name=\"description\" content=\"{str(re.split(r'\n', mded)[-1]).replace('<p>', '').replace('</p>', '')}\">{makeGoogleHappy(name, date)}")
         page_content = page_content.replace("<link rel=\"manifest\" href=\"/site.webmanifest\">", f"<link rel=\"manifest\" href=\"/site.webmanifest\">\n<link rel=\"canonical\" href=\"https://hansonbrook.com/Posts/{post_name}\">")
         file.write(page_content)
+        file.close()
 
     return name, date, mded
 
