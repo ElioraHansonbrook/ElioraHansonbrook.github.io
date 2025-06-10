@@ -154,7 +154,8 @@ def createArchive():
             acc = acc + f"\n<h3>{postMonth}</h3>\n"
             currMonth = postMonth
         name = titelize(post[11:].removesuffix(".md"))
-        acc += f"\n <a href=Posts/{post.removesuffix(".md")}.html class=\"archiveItem\">{name}</a>"
+        postName = post.removesuffix(".md")
+        acc += f"\n <a href=Posts/{postName}.html class=\"archiveItem\">{name}</a>"
     acc = acc + "\n</div>"
     file = open("Templates/archiveTemplate.html", 'w')
     file.write(acc)
@@ -426,7 +427,7 @@ def process_blog_post(post_path, output_dir, posts_dir):
     with open(page_html_path, 'w') as file:
         page_content = generatePage(mded)
         page_content = page_content.replace("<title>Eliora Hansonbrook</title>", f"<title>{name} – Eliora Hansonbrook</title>\n\t\t<meta property=\"og:title\" content=\"{name}\">\n\t\t<meta property=\"og:type\" content=\"article\">\n\t\t<meta property=\"og:url\" content=\"https://hansonbrook.com/Posts/{post_name}\">\n\t\t<meta property=\"og:image\" content=\"https://hansonbrook.com/Media/PreviewImage.png\">")
-        page_content = page_content.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", f"<meta name=\"description\" content=\"{str(re.split(r'\n', mded)[-1]).replace('<p>', '').replace('</p>', '')}\">{makeGoogleHappy(name, date)}")
+        page_content = page_content.replace("<meta name=\"description\" content=\"Eliora Hansonbrook's blog\">", "<meta name=\"description\" content=\"" + str(re.split(r'\n', mded)[-1]).replace('<p>', '').replace('</p>', '') + "\">" + makeGoogleHappy(name, date))
         page_content = page_content.replace("<link rel=\"manifest\" href=\"/site.webmanifest\">", f"<link rel=\"manifest\" href=\"/site.webmanifest\">\n<link rel=\"canonical\" href=\"https://hansonbrook.com/Posts/{post_name}\">")
         file.write(page_content)
         file.close()
