@@ -1,34 +1,66 @@
 	Outputs/2025-02-02-two-weeks.html
+	Outputs/2025-02-02-two-weeks.html
+	Outputs/2025-02-08-between-the-river-and-the-ceasefire.html
 	Outputs/2025-02-08-between-the-river-and-the-ceasefire.html
 	Outputs/2025-02-15-protest-against-protectionism.html
+	Outputs/2025-02-15-protest-against-protectionism.html
+	Outputs/2025-02-15-the-murder-of-sam-nordquist.html
 	Outputs/2025-02-15-the-murder-of-sam-nordquist.html
 	Outputs/2025-02-22-when-parties-party.html
+	Outputs/2025-02-22-when-parties-party.html
+	Outputs/2025-02-28-trumpScript:-a-satirical-programming-language.html
 	Outputs/2025-02-28-trumpScript:-a-satirical-programming-language.html
 	Outputs/2025-03-01-a-catastrophic-meeting.html
+	Outputs/2025-03-01-a-catastrophic-meeting.html
+	Outputs/2025-03-03-mandatory-babies.html
 	Outputs/2025-03-03-mandatory-babies.html
 	Outputs/2025-03-05-sisi-phean-task.html
+	Outputs/2025-03-05-sisi-phean-task.html
+	Outputs/2025-03-06-democracy-dies-in-silence.html
 	Outputs/2025-03-06-democracy-dies-in-silence.html
 	Outputs/2025-03-06-sea-ice.html
+	Outputs/2025-03-06-sea-ice.html
+	Outputs/2025-03-07-building-this-blog.html
 	Outputs/2025-03-07-building-this-blog.html
 	Outputs/2025-03-07-euro-nato-solidarity.html
+	Outputs/2025-03-07-euro-nato-solidarity.html
+	Outputs/2025-03-08-belt-and-road.html
 	Outputs/2025-03-08-belt-and-road.html
 	Outputs/2025-03-09-leadership-change.html
+	Outputs/2025-03-09-leadership-change.html
+	Outputs/2025-03-12-half-decade-covid.html
 	Outputs/2025-03-12-half-decade-covid.html
 	Outputs/2025-03-13-funding.html
+	Outputs/2025-03-13-funding.html
+	Outputs/2025-03-13-phase-two.html
 	Outputs/2025-03-13-phase-two.html
 	Outputs/2025-03-15-whither-kurdistan.html
+	Outputs/2025-03-15-whither-kurdistan.html
+	Outputs/2025-03-16-bad-day-for-eastern-europe-leaders.html
 	Outputs/2025-03-16-bad-day-for-eastern-europe-leaders.html
 	Outputs/2025-03-16-radio-free-america.html
+	Outputs/2025-03-16-radio-free-america.html
+	Outputs/2025-03-17-resume-in-fighting.html
 	Outputs/2025-03-17-resume-in-fighting.html
 	Outputs/2025-03-19-f-thirty-five.html
+	Outputs/2025-03-19-f-thirty-five.html
+	Outputs/2025-03-19-fun-links.html
 	Outputs/2025-03-19-fun-links.html
 	Outputs/2025-03-22-donald-trump-is-corrosive.html
+	Outputs/2025-03-22-donald-trump-is-corrosive.html
+	Outputs/2025-03-24-columns.html
 	Outputs/2025-03-24-columns.html
 	Outputs/2025-03-24-sudan.html
+	Outputs/2025-03-24-sudan.html
+	Outputs/2025-03-29-aiming-at-the-denmark.html
 	Outputs/2025-03-29-aiming-at-the-denmark.html
 	Outputs/2025-03-29-running-late.html
+	Outputs/2025-03-29-running-late.html
+	Outputs/2025-04-03-ten-percent.html
 	Outputs/2025-04-03-ten-percent.html
 	Outputs/2025-06-10-back-in-action.html
+	Outputs/2025-06-10-back-in-action.html
+	Outputs/2025-08-06-war-on-science.html
 2025-02-02:
 	Outputs/2025-02-02-two-weeks.html
 2025-02-08:
@@ -64,13 +96,13 @@
 2025-03-15:
 	Outputs/2025-03-15-whither-kurdistan.html
 2025-03-16:
-	Outputs/2025-03-16-radio-free-america.html
 	Outputs/2025-03-16-bad-day-for-eastern-europe-leaders.html
+	Outputs/2025-03-16-radio-free-america.html
 2025-03-17:
 	Outputs/2025-03-17-resume-in-fighting.html
 2025-03-19:
-	Outputs/2025-03-19-fun-links.html
 	Outputs/2025-03-19-f-thirty-five.html
+	Outputs/2025-03-19-fun-links.html
 2025-03-22:
 	Outputs/2025-03-22-donald-trump-is-corrosive.html
 2025-03-24:
@@ -83,3 +115,5 @@
 	Outputs/2025-04-03-ten-percent.html
 2025-06-10:
 	Outputs/2025-06-10-back-in-action.html
+2025-08-06:
+	Outputs/2025-08-06-war-on-science.html
