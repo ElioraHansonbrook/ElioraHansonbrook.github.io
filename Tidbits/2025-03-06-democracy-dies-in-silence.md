@@ -1,4 +1,0 @@
-### [Self-Censorship is Where Autocracy Begins](https://www.nytimes.com/2025/03/06/us/politics/trump-democracy.html)
-Elisabeth Bumiller reports for The New York Times:
-> Fired federal workers who are worried about losing their homes ask not to be quoted by name. University presidents fearing that millions of dollars in federal funding could disappear are holding their fire. Chief executives alarmed by tariffs that could hurt their businesses are on mute.
-Right now, the Trump Administration is showing us exactly why the First Amendment exists. I would say that "democracy dies in darkness," but the Washington Post has exemplified exactly the sort of cowardice that this article identifies. Because of Hayekian limitations, censorship is only effective when a critical mass of people censor themselves.

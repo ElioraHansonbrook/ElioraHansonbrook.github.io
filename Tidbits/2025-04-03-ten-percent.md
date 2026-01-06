@@ -1,4 +1,0 @@
-### Ten Percent Plus?!!???!!
-I think everyone knew that American President Donald Trump's "Liberation Day" tariffs were going to be bad. But the U.S.'s decision to place a ten percent or higher tariff on every other country in the world is one of the worst possible outcomes.
-The neoliberal order hasn't been great for everyone, but it's certainly been beneficial for the world as a whole. If Mr. Trump sticks with his tariffs, the entire global economy is going to suffer. Unemployment will rise, and the economies of countries around the world will shrink. Futures are already down, and I suspect the stock market will suffer throughout trading tomorrow.
-If Mr. Trump reverses his tariffs or makes deals with other countries in the next few weeks, it seems likely that this decision will be a blip. If, however, he refuses to rescind or negotiate, these tariffs may well kick off a global economic catastrophe with little precedent.
