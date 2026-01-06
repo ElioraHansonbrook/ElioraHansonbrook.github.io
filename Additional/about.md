@@ -1,7 +1,7 @@
 # About
 
 ## Eliora Hansonbrook
-Eliora Hansonbrook is a multidisciplinary intellectual with research interests spanning political science, computer science, and more. Her writing has been published in The New York Times and The Hill, and she translated historical documents for the upcoming book publication *The Einstein of Sex* by Daniel Brook. Eliora will graduate from Macalester College in May, and matriculate to the University of Chicago this fall to pursue a masters degree in international relations.
+Eliora Hansonbrook is a multidisciplinary intellectual with research interests spanning political science, computer science, and more. Her writing has been published in The New York Times and The Hill, and she translated historical documents for the upcoming book publication *The Einstein of Sex* by Daniel Brook. Eliora graduated from Macalester College in 2025, and is currently a masters candidate in the University of Chicago's Committee on International Relations.
 
 ## This Blog
 Eliora created this blog in February 2025, opting to write a Python script to procedurally generate it from a collection of Markdown files, rather than using a standard C.M.S. Although the code is available on GitHub, it is not production quality, and does not conform to standard Python conventions.
