@@ -42,6 +42,13 @@ p {
   margin-bottom: 25px;
 }
 
+img {
+    text-indent: 0px;
+    margin: 0px;
+    align-self: center;
+    max-width: 425px;
+}
+
 li {
   font-size: 17px;
   text-align: justify;

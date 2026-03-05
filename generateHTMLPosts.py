@@ -193,6 +193,17 @@ def createStyleGuide():
         file.close()
     file.close()
 
+def createPage(name):
+    file = open(f"Documents/{name}.md", 'r')
+    acc = "".join(refineMarkers(line) for line in file)
+    mded = markdown.markdown(acc, extensions=['extra', 'smarty'])
+    output_html_path = os.path.join(f"{name}.html")
+    with open(output_html_path, 'w') as file:
+        page = generatePage(mded)
+        file.write(page)
+        file.close()
+    file.close()
+
 def getSpecialAnnouncementHTML(title = str, subtitle = str, top = str, bottom = str):
     return f"""
     <div class = "specialAnnouncement" aria-hidden="true">
@@ -514,6 +525,7 @@ def main():
     create404()
     createAbout()
     createStyleGuide()
+    createPage("macs-final-project-proposal")
 
 if __name__ == "__main__":
     main()
